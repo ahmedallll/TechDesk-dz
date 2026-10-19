@@ -328,8 +328,20 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
           </div>
 
-          {/* 4. Mobile Top Row Control: Only hamburger button on opposite side */}
-          <div className="flex sm:hidden items-center">
+          {/* 4. Mobile Top Row Control: Language Switcher & Hamburger Button */}
+          <div className="flex sm:hidden items-center gap-2">
+            <button
+              type="button"
+              onClick={toggleLanguage}
+              className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold text-[#483F68] hover:text-[#191330] bg-[#F6F2FD] hover:bg-[#EDE5FA] rounded-xl transition-colors border border-purple-200/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-600 cursor-pointer shadow-2xs shrink-0"
+              title={t.switchLanguage}
+            >
+              <Globe className="w-3.5 h-3.5 text-purple-600 shrink-0" />
+              <span className="whitespace-nowrap">
+                {currentLang === 'fr' ? 'العربية' : 'Français'}
+              </span>
+            </button>
+
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import {
   Phone,
-  MessageCircle,
   Mail,
   MapPin,
   Send,
   CheckCircle,
 } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
+import { WhatsAppIcon } from './WhatsAppIcon';
 import { Language, translations } from '../translations';
 
 interface ContactSectionProps {
@@ -118,7 +118,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                     className="flex items-center gap-3 p-3 rounded-xl bg-white border border-[#EBE4F7] hover:border-emerald-300 hover:text-emerald-700 transition-colors shadow-2xs"
                   >
                     <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0">
-                      <MessageCircle className="w-4 h-4" />
+                      <WhatsAppIcon className="w-4 h-4" />
                     </div>
                     <div>
                       <div className="text-[11px] text-[#625A82]">{t.whatsappLabel}</div>
