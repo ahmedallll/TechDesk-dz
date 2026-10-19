@@ -155,6 +155,8 @@ export const Header: React.FC<HeaderProps> = ({
         type="button"
         onClick={() => setMobileMenuOpen((prev) => !prev)}
         className={`lg:hidden fixed top-1/2 -translate-y-1/2 z-50 flex items-center justify-center min-h-[48px] py-3.5 px-2.5 sm:px-3 bg-[#191330]/90 hover:bg-[#251A45] text-purple-100 backdrop-blur-md transition-all duration-300 ease-in-out cursor-pointer group shadow-[0_4px_20px_rgba(25,19,48,0.35)] focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 ${
+          mobileMenuOpen ? 'opacity-100' : 'opacity-50 hover:opacity-100'
+        } ${
           isRtl
             ? 'right-0 rounded-l-2xl border-y border-l border-purple-400/40 hover:border-purple-300/60'
             : 'left-0 rounded-r-2xl border-y border-r border-purple-400/40 hover:border-purple-300/60'
@@ -208,15 +210,30 @@ export const Header: React.FC<HeaderProps> = ({
         aria-modal="true"
         aria-hidden={!mobileMenuOpen}
       >
-        {/* Drawer Header */}
+        {/* Drawer Header with Reversed Back Arrow and Logo */}
         <div className="flex items-center justify-between px-4 py-3.5 border-b border-purple-500/20 bg-[#140B30]/60 shrink-0">
-          <a
-            href="#accueil"
-            onClick={() => handleNavClick('#accueil')}
-            className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 rounded-lg"
-          >
-            <TechDeskLogo size="sm" variant="dark" />
-          </a>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-1.5 rounded-lg text-purple-200 hover:text-white hover:bg-purple-800/40 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 cursor-pointer flex items-center justify-center"
+              aria-label={t.menuClose}
+              title={t.menuClose}
+            >
+              {isRtl ? (
+                <ChevronRight className="w-5 h-5 text-purple-300" />
+              ) : (
+                <ChevronLeft className="w-5 h-5 text-purple-300" />
+              )}
+            </button>
+            <a
+              href="#accueil"
+              onClick={() => handleNavClick('#accueil')}
+              className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 rounded-lg"
+            >
+              <TechDeskLogo size="sm" variant="dark" />
+            </a>
+          </div>
           <button
             type="button"
             onClick={() => setMobileMenuOpen(false)}
@@ -614,11 +631,19 @@ export const Header: React.FC<HeaderProps> = ({
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 text-[#241C42] hover:text-purple-700 hover:bg-[#F6F2FD] rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-600 cursor-pointer"
+                className="p-2 text-[#241C42] hover:text-purple-700 hover:bg-[#F6F2FD] rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-600 cursor-pointer flex items-center justify-center"
                 aria-expanded={mobileMenuOpen}
                 aria-label={mobileMenuOpen ? t.menuClose : t.menuOpen}
               >
-                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                {mobileMenuOpen ? (
+                  isRtl ? (
+                    <ChevronRight className="w-6 h-6 text-purple-700" />
+                  ) : (
+                    <ChevronLeft className="w-6 h-6 text-purple-700" />
+                  )
+                ) : (
+                  <Menu className="w-6 h-6" />
+                )}
               </button>
             </div>
           </div>
@@ -766,4 +791,3 @@ export const Header: React.FC<HeaderProps> = ({
     </>
   );
 };
-
