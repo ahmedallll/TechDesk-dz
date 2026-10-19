@@ -82,6 +82,23 @@ export interface Translations {
       desc: string;
     }[];
   };
+  standoutFeatures: {
+    sectionBadge: string;
+    sectionTitle: string;
+    sectionSubtitle: string;
+    aiAssistant: {
+      badge: string;
+      title: string;
+      desc: string;
+      bullets: { bold: string; text: string }[];
+    };
+    delivery: {
+      badge: string;
+      title: string;
+      desc: string;
+      bullets: { bold: string; text: string }[];
+    };
+  };
   pricing: {
     sectionTitle: string;
     sectionSubtitle: string;
@@ -539,6 +556,34 @@ export const translations: Record<Language, Translations> = {
           desc: 'Configurez l\'identité du magasin, la langue, le scanner Android, les livraisons, les sauvegardes et les paramètres système disponibles.',
         },
       ],
+    },
+    standoutFeatures: {
+      sectionBadge: 'AU-DELÀ DE LA GESTION',
+      sectionTitle: 'Ce qui fait la différence avec TechDesk DZ',
+      sectionSubtitle:
+        "Plus qu'un outil de gestion, TechDesk DZ rassemble des fonctionnalités pensées pour simplifier le quotidien de votre magasin.",
+      aiAssistant: {
+        badge: 'Assistant IA Intégré',
+        title: 'Un assistant IA intégré à votre espace de travail',
+        desc:
+          "Besoin d'aide pendant votre travail ? Retrouvez un assistant commercial disponible à tout moment, directement dans l'application. Posez vos questions en français ou en arabe, obtenez des conseils pratiques, préparez des publications ou résolvez vos doutes rapidement sans quitter votre gestion.",
+        bullets: [
+          { bold: 'Toujours accessible', text: "Bouton dédié dans l'interface principale." },
+          { bold: 'Bilingue FR / AR', text: 'Échangez naturellement dans la langue de votre choix.' },
+          { bold: 'Réponses instantanées', text: 'Conseils pratiques, rédaction de posts et aide à la décision.' },
+        ],
+      },
+      delivery: {
+        badge: 'Expéditions & Logistique',
+        title: 'Gestion intégrée des livraisons et expéditions',
+        desc:
+          "Suivez vos envois en toute simplicité. TechDesk DZ intègre la gestion des sociétés de livraison pour créer, imprimer et suivre vos bordereaux d'expédition sans double saisie.",
+        bullets: [
+          { bold: 'Sociétés de livraison', text: 'Prise en charge des livreurs et partenaires logistiques.' },
+          { bold: 'Impression des bordereaux', text: "Génération rapide des étiquettes et fiches d'expédition." },
+          { bold: 'Suivi centralisé', text: 'Vue claire sur le statut des colis et les retours.' },
+        ],
+      },
     },
     pricing: {
       sectionTitle: 'Tarifs et modalités de licence',
@@ -1096,6 +1141,34 @@ export const translations: Record<Language, Translations> = {
           desc: 'اضبط هوية المتجر واللغة والماسح الضوئي لأندرويد والتوصيل والنسخ الاحتياطية وإعدادات النظام المتاحة.',
         },
       ],
+    },
+    standoutFeatures: {
+      sectionBadge: 'إمكانيات تتجاوز التسيير',
+      sectionTitle: 'ما الذي يميز TechDesk DZ؟',
+      sectionSubtitle:
+        'أكثر من مجرد برنامج للتسيير، يجمع TechDesk DZ وظائف تساعد على تبسيط العمل اليومي في متجرك.',
+      aiAssistant: {
+        badge: 'مساعد ذكي مدمج',
+        title: 'مساعد ذكاء اصطناعي مدمج في مساحة عملك',
+        desc:
+          'هل تحتاج إلى مساعدة أثناء العمل؟ استعن بمساعد تجاري متوفر في أي وقت، مباشرة داخل التطبيق. تطرح أسئلتك بالفرنسية أو العربية، وتحصل على نصائح عملية، وتعد منشوراتك أو تحل استفساراتك بسرعة دون مغادرة برنامج التسيير.',
+        bullets: [
+          { bold: 'وصول دائم', text: 'زر مخصص في الواجهة الرئيسية.' },
+          { bold: 'مزدوج اللغة فرنسية / عربية', text: 'تواصل بشكل طبيعي باللغة التي تختارها.' },
+          { bold: 'إجابات فورية', text: 'نصائح عملية، صياغة منشورات، ومساعدة في اتخاذ القرار.' },
+        ],
+      },
+      delivery: {
+        badge: 'التوصيل والشحن',
+        title: 'إدارة مدمجة للتوصيل والشحن',
+        desc:
+          'تابع شحناتك ببساطة. يدمج TechDesk DZ إدارة شركات التوصيل لإنشاء وطباعة ومتابعة وصلات الشحن دون الحاجة لإعادة كتابة البيانات.',
+        bullets: [
+          { bold: 'شركات التوصيل', text: 'دعم للموصلين والشركاء اللوجستيين.' },
+          { bold: 'طباعة الوصلات', text: 'إنشاء سريع للملصقات واستمارات الشحن.' },
+          { bold: 'متابعة مركزية', text: 'رؤية واضحة لحالة الطرود والمرتجعات.' },
+        ],
+      },
     },
     pricing: {
       sectionTitle: 'الأسعار والترخيص',

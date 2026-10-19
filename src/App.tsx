@@ -9,6 +9,7 @@ import { Hero } from './components/Hero';
 import { ProblemSolution } from './components/ProblemSolution';
 import { FeaturesCatalogue } from './components/FeaturesCatalogue';
 import { ShowcaseSection } from './components/ShowcaseSection';
+import { StandoutFeatures } from './components/StandoutFeatures';
 import { ArchitectureTrust } from './components/ArchitectureTrust';
 import { PricingSection } from './components/PricingSection';
 import { CustomizationSection } from './components/CustomizationSection';
@@ -101,6 +102,9 @@ export default function App() {
 
         {/* 13 Official Screenshots Showcase Section */}
         <ShowcaseSection lang={lang} />
+
+        {/* Standout Features: Integrated AI Assistant & Delivery Management */}
+        <StandoutFeatures lang={lang} />
 
         {/* Windows Native Architecture & Offline Trust */}
         <ArchitectureTrust lang={lang} />
