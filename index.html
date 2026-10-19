@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Polyfill window.fetch with a setter to prevent Chrome extensions from throwing
+      // "TypeError: Cannot set property fetch of #<Window> which has only a getter"
+      try {
+        var _fetch = window.fetch ? window.fetch.bind(window) : undefined;
+        Object.defineProperty(window, 'fetch', {
+          configurable: true,
+          enumerable: true,
+          get: function () {
+            return _fetch;
+          },
+          set: function (fn) {
+            _fetch = fn;
+          },
+        });
+      } catch (e) {
+        // Fallback: ignore if already configured
+      }
+
+      // Suppress unhandled errors originating from browser extensions
+      window.addEventListener(
+        'error',
+        function (event) {
+          if (
+            event.filename &&
+            (event.filename.indexOf('chrome-extension://') !== -1 ||
+              event.filename.indexOf('moz-extension://') !== -1)
+          ) {
+            event.stopImmediatePropagation();
+            event.preventDefault();
+          }
+        },
+        true
+      );
+    </script>
+    <title>TechDesk DZ — Logiciel de gestion magasin informatique, téléphonie & SAV</title>
+    <meta
+      name="description"
+      content="Logiciel Windows de gestion pour magasins d'informatique, téléphonie, vente, stock et service après-vente en Algérie. Téléchargez l'essai gratuit de 72h."
+    />
+    <meta property="og:title" content="TechDesk DZ — Logiciel de gestion magasin & SAV" />
+    <meta
+      property="og:description"
+      content="Gérez vos ventes, votre stock, vos produits, vos clients et votre SAV depuis une seule application Windows dédiée aux commerces informatiques en Algérie."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:locale:alternate" content="ar_DZ" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="TechDesk DZ — Logiciel de gestion magasin & SAV" />
+    <meta
+      name="twitter:description"
+      content="Logiciel Windows de gestion commerciale et SAV pour magasins informatiques et téléphonie en Algérie."
+    />
+    <meta name="theme-color" content="#130E2E" />
+
+    <!-- Google Fonts for crisp Latin & Arabic typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Readex+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "TechDesk DZ",
+        "operatingSystem": "Windows 10, Windows 11 (64-bit)",
+        "applicationCategory": "BusinessApplication",
+        "description": "Logiciel de gestion de magasin informatique, téléphonie, ventes, stock et service après-vente pour les commerces en Algérie.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "DZD",
+          "description": "Essai gratuit 3 jours (72 heures)"
+        }
+      }
+    </script>
+  </head>
+  <body class="bg-white text-[#191330] antialiased selection:bg-purple-600 selection:text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

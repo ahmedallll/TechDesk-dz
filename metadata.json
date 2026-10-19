@@ -1,0 +1,6 @@
+{
+  "name": "TechDesk DZ — Logiciel de gestion magasin & SAV",
+  "description": "Site officiel de TechDesk DZ, logiciel Windows de gestion de magasin informatique, téléphonie, ventes, stock et service après-vente en Algérie.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
