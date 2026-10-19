@@ -74,12 +74,13 @@ export const siteConfig: SiteConfig = {
     minResolution: '1366 × 768 pixels',
   },
   downloads: {
-    // Maintenu à null jusqu'à la mise en ligne officielle de l'exécutable
-    trialInstallerUrl: null,
-    installerFileName: 'TechDeskDZ_Setup_v1.0.exe',
+    // URL officielle de téléchargement de l'installateur Windows hébergé sur GitHub Releases
+    trialInstallerUrl:
+      'https://github.com/ahmedallll/TechDesk-dz/releases/download/v1.0.0/TechDesk.DZ.Setup.0.0.0.exe',
+    installerFileName: 'TechDesk.DZ.Setup.0.0.0.exe',
     installerSha256: null,
-    releaseDate: 'Prochainement disponible',
-    isDownloadReady: false,
+    releaseDate: 'v1.0.0',
+    isDownloadReady: true,
   },
   licensing: {
     // Maintenu à null jusqu'à l'implémentation du flux de paiement/commande

@@ -187,6 +187,16 @@ export interface Translations {
     trialSubtitle: string;
     statusBadge: string;
     statusDesc: string;
+    downloadButton: string;
+    installerMeta: string;
+    flowTitle: string;
+    step1Title: string;
+    step1Desc: string;
+    step2Title: string;
+    step2Desc: string;
+    step3Title: string;
+    step3Desc: string;
+    whatsappTrialBtn: string;
     systemRequirementsTitle: string;
     requirements: {
       os: string;
@@ -730,9 +740,19 @@ export const translations: Record<Language, Translations> = {
     downloadModal: {
       trialTitle: 'Téléchargement de TechDesk DZ',
       trialSubtitle: 'Version d’essai gratuite de 3 jours (72 heures)',
-      statusBadge: 'Mise à disposition imminente',
+      statusBadge: 'Installateur officiel Windows disponible',
       statusDesc:
-        'L’exécutable d’installation officiel (Windows 64-bit) sera téléchargeable directement ici dès l’ouverture des serveurs de distribution. Vous pouvez nous contacter pour être prévenu dès la disponibilité.',
+        'L’exécutable d’installation officiel pour Windows est disponible au téléchargement direct. Suivez les 3 étapes pour commencer votre essai gratuit.',
+      downloadButton: 'Télécharger TechDesk DZ (.exe)',
+      installerMeta: 'TechDesk.DZ.Setup.0.0.0.exe • ~109 Mo • Windows 10 / 11 (64-bit)',
+      flowTitle: 'Parcours d’installation en 3 étapes simples :',
+      step1Title: '1. Télécharger',
+      step1Desc: 'Téléchargez le programme d’installation officiel ci-dessous.',
+      step2Title: '2. Installer',
+      step2Desc: 'Exécutez le fichier et suivez l’assistant d’installation sur votre PC.',
+      step3Title: '3. Activer votre essai gratuit',
+      step3Desc: 'Cliquez sur le bouton WhatsApp ci-dessous pour recevoir votre clé d’activation 72 heures.',
+      whatsappTrialBtn: 'Demander ma licence 3 jours sur WhatsApp',
       systemRequirementsTitle: 'Configuration système requise :',
       requirements: {
         os: 'Windows 11 ou Windows 10 (versions 64-bit uniquement)',
@@ -741,7 +761,7 @@ export const translations: Record<Language, Translations> = {
         screen: 'Résolution d’écran minimale 1366 × 768 pixels',
         device: 'Connexion Internet requise pour l’activation de la licence (30 secondes)',
       },
-      actionText: 'Être notifié par WhatsApp / Téléphone',
+      actionText: 'Demander ma licence d’essai par WhatsApp',
       close: 'Fermer',
       purchaseTitle: 'Acquisition de la Licence à Vie',
       purchaseSubtitle: 'TechDesk DZ Desktop Windows Edition',
@@ -1277,9 +1297,19 @@ export const translations: Record<Language, Translations> = {
     downloadModal: {
       trialTitle: 'تحميل برنامج TechDesk DZ',
       trialSubtitle: 'نسخة تجريبية مجانية لمدة 3 أيام (72 ساعة)',
-      statusBadge: 'الإتاحة للتحميل قريباً جداً',
+      statusBadge: 'ملف التثبيت الرسمي لويندوز متوفر للتحميل المباشر',
       statusDesc:
-        'ملف التثبيت الرسمي لويندوز (64 بت) سيكون متاحاً للتحميل المباشر هنا فور اكتمال رفع الإصدار على خوادم التوزيع. يمكنك ترك رقم هاتفك للتواصل معك وإشعارك فور التوفر.',
+        'ملف التثبيت الرسمي لنظام ويندوز جاهز للتحميل المباشر الآن. اتبع الخطوات الـ 3 البسيطة لبدء تجربتك المجانية.',
+      downloadButton: 'تحميل TechDesk DZ (.exe)',
+      installerMeta: 'TechDesk.DZ.Setup.0.0.0.exe • ~109 ميغابايت • ويندوز 10 / 11 (64 بت)',
+      flowTitle: 'خطوات تثبيت وتشغيل البرنامج (3 خطوات سهلة):',
+      step1Title: '1. التحميل',
+      step1Desc: 'حمّل ملف التثبيت الرسمي (.exe) عبر الزر أدناه.',
+      step2Title: '2. التثبيت',
+      step2Desc: 'شغّل الملف واتبع معالج التثبيت على جهاز الكمبيوتر الخاص بك.',
+      step3Title: '3. تفعيل التجربة المجانية',
+      step3Desc: 'اضغط على زر واتساب أدناه لطلب مفتاح التفعيل المجاني لمدة 3 أيام.',
+      whatsappTrialBtn: 'طلب مفتاح التجربة المجانية (3 أيام) عبر واتساب',
       systemRequirementsTitle: 'متطلبات النظام لتشغيل البرنامج:',
       requirements: {
         os: 'نظام Windows 11 أو Windows 10 (إصدارات 64 بت فقط)',
@@ -1288,7 +1318,7 @@ export const translations: Record<Language, Translations> = {
         screen: 'دقة شاشة لا تقل عن 1366 × 768 بكسل',
         device: 'اتصال بالإنترنت مطلوب لبضع ثوانٍ فقط عند تفعيل الترخيص',
       },
-      actionText: 'إشعار بالتوفر عبر واتساب / الهاتف',
+      actionText: 'طلب كود التجربة المجانية عبر واتساب',
       close: 'إغلاق',
       purchaseTitle: 'طلب الترخيص الدائم مدى الحياة',
       purchaseSubtitle: 'TechDesk DZ Desktop Windows Edition',

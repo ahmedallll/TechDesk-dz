@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   X,
+  Download,
   Monitor,
   HardDrive,
   Cpu,
@@ -9,8 +10,7 @@ import {
   MessageSquare,
   ShieldCheck,
   CheckCircle,
-  Clock,
-  Send,
+  Sparkles,
 } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 import { Language, translations } from '../translations';
@@ -28,24 +28,24 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({
   onClose,
   lang,
 }) => {
-  const [notifySuccess, setNotifySuccess] = useState(false);
-  const [phoneInput, setPhoneInput] = useState('');
   const t = translations[lang].downloadModal;
   const isRtl = lang === 'ar';
 
   if (!isOpen) return null;
 
-  const handleNotifySubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!phoneInput.trim()) return;
-    setNotifySuccess(true);
-  };
-
   const whatsappMessage = encodeURIComponent(
     lang === 'ar'
-      ? `السلام عليكم، أود الاستفسار حول برنامج TechDesk DZ والحصول على تفاصيل ${type === 'trial' ? 'النسخة التجريبية' : 'الترخيص الدائم'}.`
-      : `Bonjour, je souhaite obtenir des informations sur TechDesk DZ concernant ${type === 'trial' ? "la version d'essai" : 'la licence à vie'}.`
+      ? type === 'trial'
+        ? 'السلام عليكم، قمت بتحميل برنامج TechDesk DZ وتثبيته على جهازي. أود الحصول على مفتاح ترخيص التجربة المجانية لمدة 3 أيام.'
+        : 'السلام عليكم، أود الاستفسار حول برنامج TechDesk DZ والحصول على تفاصيل الترخيص الدائم.'
+      : type === 'trial'
+        ? "Bonjour, j'ai téléchargé et installé TechDesk DZ sur mon PC Windows. Je souhaite obtenir ma clé d'activation pour l'essai gratuit de 3 jours."
+        : 'Bonjour, je souhaite obtenir des informations sur TechDesk DZ concernant la licence à vie.'
   );
+
+  const installerUrl =
+    siteConfig.downloads.trialInstallerUrl ||
+    'https://github.com/ahmedallll/TechDesk-dz/releases/download/v1.0.0/TechDesk.DZ.Setup.0.0.0.exe';
 
   return (
     <div
@@ -79,19 +79,125 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({
 
         {/* Content */}
         <div className="p-6 space-y-5 max-h-[80vh] overflow-y-auto custom-scrollbar">
-          {/* Honest status explanation on pale lavender */}
-          <div className="bg-[#F6F2FD] border border-purple-200/80 rounded-xl p-4 text-xs space-y-2">
-            <div className="flex items-center gap-2 font-semibold text-purple-900">
-              <Clock className="w-4 h-4 text-purple-700 shrink-0" />
-              <span>{type === 'trial' ? t.statusBadge : 'Commande directe disponible'}</span>
-            </div>
-            <p className="text-[#554D74] leading-relaxed">
-              {type === 'trial' ? t.statusDesc : t.purchaseStatusDesc}
-            </p>
-          </div>
+          {type === 'trial' ? (
+            <>
+              {/* 3-Step Process Guide */}
+              <div className="bg-[#FAF8FE] border border-purple-200/80 rounded-xl p-4 space-y-3">
+                <div className="text-xs font-bold text-[#191330] tracking-tight flex items-center gap-1.5">
+                  <CheckCircle className="w-4 h-4 text-purple-700 shrink-0" />
+                  <span>{t.flowTitle}</span>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+                  <div className="p-2.5 rounded-lg bg-white border border-purple-100 shadow-2xs">
+                    <div className="font-bold text-purple-900 mb-0.5">{t.step1Title}</div>
+                    <div className="text-[11px] text-[#554D74] leading-relaxed">{t.step1Desc}</div>
+                  </div>
+                  <div className="p-2.5 rounded-lg bg-white border border-purple-100 shadow-2xs">
+                    <div className="font-bold text-purple-900 mb-0.5">{t.step2Title}</div>
+                    <div className="text-[11px] text-[#554D74] leading-relaxed">{t.step2Desc}</div>
+                  </div>
+                  <div className="p-2.5 rounded-lg bg-white border border-purple-100 shadow-2xs">
+                    <div className="font-bold text-purple-900 mb-0.5">{t.step3Title}</div>
+                    <div className="text-[11px] text-[#554D74] leading-relaxed">{t.step3Desc}</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Direct Download Action Section */}
+              <div className="space-y-2 text-center pt-1">
+                <a
+                  href={installerUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full box-border inline-flex items-center justify-center gap-2.5 py-3.5 px-6 text-sm sm:text-base font-bold text-white bg-gradient-to-r from-purple-700 via-purple-600 to-indigo-600 hover:from-purple-800 hover:via-purple-700 hover:to-indigo-700 active:brightness-95 rounded-xl shadow-md hover:shadow-lg transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-600 cursor-pointer"
+                >
+                  <Download className="w-5 h-5 shrink-0" />
+                  <span>{t.downloadButton}</span>
+                </a>
+                <p className="text-[11px] text-[#625A82]">
+                  {t.installerMeta}
+                </p>
+              </div>
+
+              {/* Step 3: WhatsApp Activation Request Button (directly below download section) */}
+              <div className="pt-2 border-t border-purple-100 space-y-2">
+                <div className="text-xs font-semibold text-[#191330] flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5 text-purple-700 shrink-0" />
+                  <span>
+                    {isRtl
+                      ? 'الخطوة 3 : طلب كود تفعيل التجربة المجانية (3 أيام) :'
+                      : 'Étape 3 : Demander votre activation gratuite (3 jours) :'}
+                  </span>
+                </div>
+
+                <a
+                  href={`https://wa.me/${siteConfig.contact.whatsapp.replace(/\D/g, '')}?text=${whatsappMessage}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full flex items-center justify-center gap-2.5 py-3 px-4 bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white rounded-xl text-xs sm:text-sm font-semibold shadow-2xs transition-colors cursor-pointer"
+                >
+                  <MessageSquare className="w-4 h-4 shrink-0" />
+                  <span>
+                    {t.whatsappTrialBtn} : {siteConfig.contact.whatsappDisplay}
+                  </span>
+                </a>
+
+                <div className="flex items-center justify-between text-[11px] text-[#625A82] px-1">
+                  <span>{isRtl ? 'أو عبر الاتصال المباشر :' : 'Ou par téléphone direct :'}</span>
+                  <a
+                    href={`tel:${siteConfig.contact.phone}`}
+                    className="font-medium text-purple-900 hover:underline flex items-center gap-1"
+                  >
+                    <Phone className="w-3 h-3 text-purple-700" />
+                    <span>{siteConfig.contact.phoneDisplay}</span>
+                  </a>
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              {/* Purchase Section */}
+              <div className="bg-[#F6F2FD] border border-purple-200/80 rounded-xl p-4 text-xs space-y-2">
+                <div className="flex items-center gap-2 font-semibold text-purple-900">
+                  <Sparkles className="w-4 h-4 text-purple-700 shrink-0" />
+                  <span>Commande directe disponible</span>
+                </div>
+                <p className="text-[#554D74] leading-relaxed">
+                  {t.purchaseStatusDesc}
+                </p>
+              </div>
+
+              {/* Purchase Direct Contact Actions */}
+              <div className="space-y-3 pt-1">
+                <div className="text-xs font-semibold text-[#191330]">
+                  {isRtl ? 'للتواصل الفوري وطلب الترخيص الدائم :' : 'Contact direct et commande :'}
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <a
+                    href={`https://wa.me/${siteConfig.contact.whatsapp.replace(/\D/g, '')}?text=${whatsappMessage}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 py-2.5 px-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-semibold shadow-2xs transition-colors"
+                  >
+                    <MessageSquare className="w-4 h-4" />
+                    <span>WhatsApp : {siteConfig.contact.whatsappDisplay}</span>
+                  </a>
+
+                  <a
+                    href={`tel:${siteConfig.contact.phone}`}
+                    className="flex items-center justify-center gap-2 py-2.5 px-3 bg-[#191330] hover:bg-[#281E48] text-white rounded-lg text-xs font-semibold shadow-2xs transition-colors"
+                  >
+                    <Phone className="w-4 h-4" />
+                    <span>{siteConfig.contact.phoneDisplay}</span>
+                  </a>
+                </div>
+              </div>
+            </>
+          )}
 
           {/* System Requirements */}
-          <div className="space-y-2.5">
+          <div className="space-y-2.5 pt-2 border-t border-purple-100">
             <h4 className="text-xs font-bold text-[#191330] uppercase tracking-wider">
               {t.systemRequirementsTitle}
             </h4>
@@ -127,70 +233,6 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({
                   ? 'الترخيص الدائم يربط بالجهاز بمفتاح رسمي دائم بدون اشتراكات شهرية متكررة.'
                   : 'La licence à vie s’active définitivement par poste avec votre clé officielle, sans abonnement récurrent.'}
             </p>
-          </div>
-
-          {/* Direct Contact Actions */}
-          <div className="space-y-3 pt-2 border-t border-purple-100">
-            <div className="text-xs font-semibold text-[#191330]">
-              {isRtl ? 'للتواصل الفوري وطلب التفعيل :' : 'Contact direct et commande :'}
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              <a
-                href={`https://wa.me/${siteConfig.contact.whatsapp.replace(/\D/g, '')}?text=${whatsappMessage}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 py-2.5 px-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-semibold shadow-2xs transition-colors"
-              >
-                <MessageSquare className="w-4 h-4" />
-                <span>WhatsApp : {siteConfig.contact.whatsappDisplay}</span>
-              </a>
-
-              <a
-                href={`tel:${siteConfig.contact.phone}`}
-                className="flex items-center justify-center gap-2 py-2.5 px-3 bg-[#191330] hover:bg-[#281E48] text-white rounded-lg text-xs font-semibold shadow-2xs transition-colors"
-              >
-                <Phone className="w-4 h-4" />
-                <span>{siteConfig.contact.phoneDisplay}</span>
-              </a>
-            </div>
-
-            {/* Notification Subscription */}
-            {!notifySuccess ? (
-              <form onSubmit={handleNotifySubmit} className="pt-2">
-                <label className="block text-[11px] font-medium text-[#554D74] mb-1">
-                  {isRtl
-                    ? 'أو أدخل رقم هاتفك لنتواصل معك فور توفر رابط التحميل :'
-                    : 'Ou laissez votre numéro pour être alerté dès l’ouverture du téléchargement :'}
-                </label>
-                <div className="flex gap-2">
-                  <input
-                    type="tel"
-                    required
-                    value={phoneInput}
-                    onChange={(e) => setPhoneInput(e.target.value)}
-                    placeholder="Ex: 0550 12 34 56"
-                    className="flex-1 text-xs px-3 py-2 border border-[#DCD3F0] rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
-                  />
-                  <button
-                    type="submit"
-                    className="bg-gradient-to-r from-purple-700 via-purple-600 to-indigo-600 hover:from-purple-800 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer"
-                  >
-                    <Send className="w-3.5 h-3.5" />
-                    <span>{isRtl ? 'تسجيل' : 'M’avertir'}</span>
-                  </button>
-                </div>
-              </form>
-            ) : (
-              <div className="p-3 bg-purple-50/70 border border-purple-200 text-purple-900 rounded-lg text-xs flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-purple-600 shrink-0" />
-                <span>
-                  {isRtl
-                    ? 'تم تسجيل طلبك بنجاح. سنتواصل معك فور توفر الإصدار.'
-                    : 'Votre demande a bien été notée. Nous vous contacterons dès la disponibilité.'}
-                </span>
-              </div>
-            )}
           </div>
         </div>
 

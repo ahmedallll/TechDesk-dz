@@ -49,6 +49,18 @@ export default function App() {
     }
   }, [lang]);
 
+  useEffect(() => {
+    const checkHash = () => {
+      const hash = window.location.hash.toLowerCase();
+      if (hash === '#telecharger' || hash === '#download' || hash === '#trial') {
+        setModalState({ isOpen: true, type: 'trial' });
+      }
+    };
+    checkHash();
+    window.addEventListener('hashchange', checkHash);
+    return () => window.removeEventListener('hashchange', checkHash);
+  }, []);
+
   const handleOpenDownload = (type: 'trial' | 'purchase') => {
     setModalState({ isOpen: true, type });
   };
