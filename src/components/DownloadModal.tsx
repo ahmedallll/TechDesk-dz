@@ -44,7 +44,7 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({
 
   const installerUrl =
     siteConfig.downloads.trialInstallerUrl ||
-    'https://github.com/ahmedallll/TechDesk-dz/releases/download/v1.0.0/TechDesk.DZ.Setup.0.0.0.exe';
+    'https://github.com/ahmedallll/TechDesk-dz/releases/latest/download/TechDesk-DZ-Setup.exe';
 
   return (
     <div

@@ -76,8 +76,8 @@ export const siteConfig: SiteConfig = {
   downloads: {
     // URL officielle de téléchargement de l'installateur Windows hébergé sur GitHub Releases
     trialInstallerUrl:
-      'https://github.com/ahmedallll/TechDesk-dz/releases/download/v1.0.0/TechDesk.DZ.Setup.0.0.0.exe',
-    installerFileName: 'TechDesk.DZ.Setup.0.0.0.exe',
+      'https://github.com/ahmedallll/TechDesk-dz/releases/latest/download/TechDesk-DZ-Setup.exe',
+    installerFileName: 'TechDesk-DZ-Setup.exe',
     installerSha256: null,
     releaseDate: 'v1.0.0',
     isDownloadReady: true,
