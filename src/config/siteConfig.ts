@@ -86,8 +86,8 @@ export const siteConfig: SiteConfig = {
     isDownloadReady: true,
     // URL officielle de téléchargement direct de l'application Android TechDesk Review
     androidScannerUrl:
-      'https://github.com/ahmedallll/TechDesk-Scanner/releases/download/v1.0.0/app-debug.apk',
-    androidScannerFileName: 'TechDesk-Scanner.apk',
+      'https://github.com/ahmedallll/TechDesk-Review/releases/download/v1.0.0/TechDesk.Review.apk',
+    androidScannerFileName: 'TechDesk-Review.apk',
   },
   licensing: {
     // Maintenu à null jusqu'à l'implémentation du flux de paiement/commande
