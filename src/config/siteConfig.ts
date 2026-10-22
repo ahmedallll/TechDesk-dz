@@ -28,6 +28,9 @@ export interface SiteConfig {
     installerSha256: string | null;
     releaseDate: string | null;
     isDownloadReady: boolean;
+    // Application mobile compagnon TechDesk Review (Android)
+    androidScannerUrl: string;
+    androidScannerFileName: string;
   };
   licensing: {
     // Si null ou vide, le bouton ouvre la modale de contact/commande
@@ -81,6 +84,10 @@ export const siteConfig: SiteConfig = {
     installerSha256: null,
     releaseDate: 'v1.0.0',
     isDownloadReady: true,
+    // URL officielle de téléchargement direct de l'application Android TechDesk Review
+    androidScannerUrl:
+      'https://github.com/ahmedallll/TechDesk-Scanner/releases/download/v1.0.0/app-debug.apk',
+    androidScannerFileName: 'TechDesk-Scanner.apk',
   },
   licensing: {
     // Maintenu à null jusqu'à l'implémentation du flux de paiement/commande

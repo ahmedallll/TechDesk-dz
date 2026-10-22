@@ -9,6 +9,7 @@ import {
   ShieldCheck,
   CheckCircle2,
   Sparkles,
+  Smartphone,
 } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 import { Language, translations } from '../translations';
@@ -147,6 +148,33 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({
                 </a>
                 <p className="text-[11px] text-[#625A82]">
                   {t.installerMeta}
+                </p>
+              </div>
+
+              {/* Android Companion Scanner Application Option */}
+              <div className="p-3 sm:p-3.5 rounded-xl bg-gradient-to-br from-[#FAF8FF] to-[#F3EEFC] border border-purple-200/90 space-y-2.5">
+                <div className="flex items-center justify-between text-xs">
+                  <div className="flex items-center gap-2 font-bold text-[#191330]">
+                    <Smartphone className="w-4 h-4 text-purple-700 shrink-0" />
+                    <span>{t.androidScannerTitle}</span>
+                  </div>
+                  <span className="text-[10px] font-bold text-purple-800 bg-purple-100/90 px-2 py-0.5 rounded border border-purple-300/70">
+                    {t.androidScannerBadge}
+                  </span>
+                </div>
+                <p className="text-[11px] text-[#554D74] leading-relaxed">
+                  {t.androidScannerDesc}
+                </p>
+                <a
+                  href={siteConfig.downloads.androidScannerUrl}
+                  download={siteConfig.downloads.androidScannerFileName}
+                  className="w-full box-border inline-flex items-center justify-center gap-2 py-2.5 px-4 text-xs sm:text-sm font-bold text-purple-900 bg-white hover:bg-purple-50/90 border border-purple-300/90 rounded-lg shadow-2xs hover:shadow-xs transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-600 cursor-pointer"
+                >
+                  <Download className="w-4 h-4 text-purple-700 shrink-0" />
+                  <span>{t.androidDownloadButton}</span>
+                </a>
+                <p className="text-[10px] text-center text-[#625A82]">
+                  {t.androidMeta}
                 </p>
               </div>
 

@@ -1,7 +1,8 @@
 import React from 'react';
-import { Download, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Download, ArrowRight, ShieldCheck, Smartphone } from 'lucide-react';
 import { DesktopAppPreview } from './DesktopAppPreview';
 import { Language, translations } from '../translations';
+import { siteConfig } from '../config/siteConfig';
 
 interface HeroProps {
   lang: Language;
@@ -53,6 +54,24 @@ export const Hero: React.FC<HeroProps> = ({ lang, onOpenDownload }) => {
               >
                 <span>{t.ctaSecondary}</span>
                 <ArrowRight className={`w-4 h-4 shrink-0 ${isRtl ? 'rotate-180' : ''}`} />
+              </a>
+            </div>
+
+            {/* Phone App Direct Download Button */}
+            <div className="pt-1">
+              <a
+                href={siteConfig.downloads.androidScannerUrl}
+                download={siteConfig.downloads.androidScannerFileName}
+                className="inline-flex items-center gap-2.5 px-4 py-2.5 text-xs sm:text-sm font-bold text-purple-900 hover:text-purple-950 bg-white hover:bg-purple-50/80 border border-purple-200/90 hover:border-purple-300 rounded-xl shadow-2xs hover:shadow-xs transition-all focus-visible:ring-2 focus-visible:ring-purple-600 cursor-pointer group"
+              >
+                <div className="w-6 h-6 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center shrink-0 group-hover:bg-purple-200 transition-colors">
+                  <Smartphone className="w-3.5 h-3.5" />
+                </div>
+                <span>{t.phoneAppCta}</span>
+                <span className="inline-flex items-center gap-1 text-[10px] font-bold text-purple-700 bg-purple-50 border border-purple-200 px-1.5 py-0.5 rounded shadow-2xs">
+                  <Download className="w-3 h-3 text-purple-600" />
+                  <span>{t.phoneAppBadge}</span>
+                </span>
               </a>
             </div>
 

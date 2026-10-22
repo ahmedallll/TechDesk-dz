@@ -36,6 +36,8 @@ export interface Translations {
     trustNoteTitle: string;
     trustNote: string;
     appPreviewTag: string;
+    phoneAppCta: string;
+    phoneAppBadge: string;
   };
   problems: {
     sectionTitle: string;
@@ -206,6 +208,11 @@ export interface Translations {
     statusDesc: string;
     downloadButton: string;
     installerMeta: string;
+    androidScannerTitle: string;
+    androidScannerBadge: string;
+    androidScannerDesc: string;
+    androidDownloadButton: string;
+    androidMeta: string;
     flowTitle: string;
     step1Title: string;
     step1Desc: string;
@@ -275,6 +282,8 @@ export const translations: Record<Language, Translations> = {
       trustNote:
         'Stockage local de vos données commerciales sur votre machine. Activation de licence en ligne sécurisée.',
       appPreviewTag: 'Interface réelle de TechDesk DZ sous Windows',
+      phoneAppCta: 'Télécharger l’application mobile (TechDesk Review)',
+      phoneAppBadge: 'Android APK',
     },
     problems: {
       sectionTitle: 'Les défis quotidiens des magasins informatiques',
@@ -789,7 +798,13 @@ export const translations: Record<Language, Translations> = {
       statusDesc:
         'L’exécutable d’installation officiel pour Windows est disponible en téléchargement direct. Suivez les 3 étapes pour commencer votre essai gratuit.',
       downloadButton: 'Télécharger TechDesk DZ (.exe)',
-      installerMeta: 'TechDesk.DZ.Setup.0.0.0.exe • ~109 Mo • Version officielle Windows',
+      installerMeta: 'TechDesk-DZ-Setup.exe • Version officielle Windows',
+      androidScannerTitle: 'Application Mobile : TechDesk Review',
+      androidScannerBadge: 'Android APK',
+      androidScannerDesc:
+        'Connectez votre smartphone Android en direct avec votre logiciel TechDesk DZ sur PC.',
+      androidDownloadButton: 'Télécharger TechDesk Review (.apk)',
+      androidMeta: 'TechDesk-Scanner.apk • Téléchargement direct APK pour Android',
       flowTitle: 'Installation & activation en 3 étapes :',
       step1Title: '1. Télécharger',
       step1Desc: 'Téléchargez le fichier d’installation officiel ci-dessous.',
@@ -860,6 +875,8 @@ export const translations: Record<Language, Translations> = {
       trustNote:
         'تخزين محلي كامل لبياناتك التجارية على جهازك. تفعيل آمن للترخيص عبر الإنترنت.',
       appPreviewTag: 'واجهة حقيقية لبرنامج TechDesk DZ على نظام ويندوز',
+      phoneAppCta: 'تحميل تطبيق الهاتف (TechDesk Review)',
+      phoneAppBadge: 'Android APK',
     },
     problems: {
       sectionTitle: 'التحديات اليومية لمحلات الإعلام الآلي والهواتف',
@@ -1374,7 +1391,13 @@ export const translations: Record<Language, Translations> = {
       statusDesc:
         'ملف التثبيت الرسمي لنظام ويندوز جاهز للتحميل المباشر الآن. اتبع الخطوات الـ 3 البسيطة لبدء تجربتك المجانية.',
       downloadButton: 'تحميل TechDesk DZ (.exe)',
-      installerMeta: 'TechDesk.DZ.Setup.0.0.0.exe • ~109 ميغابايت • نسخة رسمية ويندوز',
+      installerMeta: 'TechDesk-DZ-Setup.exe • نسخة رسمية ويندوز',
+      androidScannerTitle: 'تطبيق الهاتف : TechDesk Review',
+      androidScannerBadge: 'Android APK',
+      androidScannerDesc:
+        'اربط هاتفك الذكي بنظام أندرويد مباشرة ببرنامج TechDesk DZ على الكمبيوتر للمراجعة والمتابعة السريعة.',
+      androidDownloadButton: 'تحميل تطبيق TechDesk Review (.apk)',
+      androidMeta: 'TechDesk-Scanner.apk • تحميل مباشر APK لأجهزة أندرويد',
       flowTitle: 'التثبيت والتفعيل في 3 خطوات :',
       step1Title: '1. التحميل',
       step1Desc: 'حمّل ملف التثبيت الرسمي من خلال الزر أدناه.',

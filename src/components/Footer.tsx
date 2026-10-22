@@ -49,6 +49,15 @@ export const Footer: React.FC<FooterProps> = ({ lang, onOpenDownload }) => {
                 </button>
               </li>
               <li>
+                <a
+                  href={siteConfig.downloads.androidScannerUrl}
+                  download={siteConfig.downloads.androidScannerFileName}
+                  className="hover:text-white transition-colors text-left"
+                >
+                  {lang === 'ar' ? 'تطبيق الهاتف (TechDesk Review APK)' : 'TechDesk Review (Android APK)'}
+                </a>
+              </li>
+              <li>
                 <a href="#galerie" className="hover:text-white transition-colors">
                   {lang === 'ar' ? 'صور البرنامج' : 'Captures d\'écran'}
                 </a>

@@ -9,9 +9,11 @@ import {
   ChevronDown,
   ChevronRight,
   ChevronLeft,
+  Smartphone,
 } from 'lucide-react';
 import { TechDeskLogo } from './TechDeskLogo';
 import { Language, translations } from '../translations';
+import { siteConfig } from '../config/siteConfig';
 
 interface HeaderProps {
   currentLang: Language;
@@ -397,8 +399,8 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
 
-        {/* Drawer Bottom Action: Free Trial Download */}
-        <div className="p-4 border-t border-purple-500/20 bg-[#110A26]/80 shrink-0">
+        {/* Drawer Bottom Action: Free Trial Download & Android Scanner */}
+        <div className="p-4 border-t border-purple-500/20 bg-[#110A26]/80 shrink-0 space-y-2">
           <button
             type="button"
             onClick={() => {
@@ -410,6 +412,20 @@ export const Header: React.FC<HeaderProps> = ({
             <Download className="w-4 h-4 shrink-0" />
             <span className="truncate">{t.downloadTrial}</span>
           </button>
+
+          <a
+            href={siteConfig.downloads.androidScannerUrl}
+            download={siteConfig.downloads.androidScannerFileName}
+            onClick={() => setMobileMenuOpen(false)}
+            className="w-full flex items-center justify-center gap-2 px-3 py-2 text-xs font-semibold text-purple-200 hover:text-white bg-purple-900/40 hover:bg-purple-800/60 border border-purple-500/30 rounded-xl transition-colors cursor-pointer"
+          >
+            <Smartphone className="w-3.5 h-3.5 text-purple-300 shrink-0" />
+            <span className="truncate">
+              {currentLang === 'ar'
+                ? 'تحميل تطبيق TechDesk Review (.apk)'
+                : 'Télécharger TechDesk Review (.apk)'}
+            </span>
+          </a>
         </div>
       </div>
 
