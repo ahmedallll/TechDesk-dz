@@ -1,6 +1,6 @@
 {
-  "name": "TechDesk DZ — Logiciel de gestion magasin & SAV",
-  "description": "Site officiel de TechDesk DZ, logiciel Windows de gestion de magasin informatique, téléphonie, ventes, stock et service après-vente en Algérie.",
+  "name": "TechDesk Scanner",
+  "description": "Native Android barcode scanner for TechDesk DZ over USB tethering with live CameraX preview, Keystore security, and multi-language support.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
