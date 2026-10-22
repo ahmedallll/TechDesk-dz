@@ -101,6 +101,29 @@ export interface Translations {
       bullets: { bold: string; text: string }[];
     };
   };
+  mobileApp: {
+    badge: string;
+    heading: string;
+    description: string;
+    supportingText: string;
+    featuresHeading: string;
+    featuresSubtitle: string;
+    feature1: {
+      title: string;
+      desc: string;
+    };
+    feature2: {
+      title: string;
+      desc: string;
+    };
+    feature3: {
+      title: string;
+      desc: string;
+    };
+    downloadCta: string;
+    downloadDirect: string;
+    zoomHint: string;
+  };
   pricing: {
     sectionTitle: string;
     sectionSubtitle: string;
@@ -593,6 +616,29 @@ export const translations: Record<Language, Translations> = {
           { bold: 'Suivi centralisé', text: 'Vue claire sur le statut des colis et les retours.' },
         ],
       },
+    },
+    mobileApp: {
+      badge: 'APPLICATION MOBILE',
+      heading: 'TechDesk DZ, aussi sur votre téléphone',
+      description: 'Découvrez l’interface mobile de TechDesk Scanner et ses principales fonctionnalités.',
+      supportingText: 'Une interface pensée pour une utilisation simple et pratique au quotidien.',
+      featuresHeading: 'Fonctionnalités principales',
+      featuresSubtitle: 'Une application mobile intuitive conçue pour piloter et suivre votre magasin où que vous soyez.',
+      feature1: {
+        title: 'Tableau de bord',
+        desc: 'Retrouvez les principaux indicateurs présentés dans l’interface mobile.',
+      },
+      feature2: {
+        title: 'Rapports',
+        desc: 'Consultez les rapports disponibles pour suivre l’activité de votre magasin.',
+      },
+      feature3: {
+        title: 'Scanner de codes-barres',
+        desc: 'Utilisez l’appareil photo de votre téléphone pour scanner les codes-barres.',
+      },
+      downloadCta: 'Télécharger TechDesk Review (.apk)',
+      downloadDirect: 'Téléchargement direct APK • Android',
+      zoomHint: 'Agrandir l’écran',
     },
     pricing: {
       sectionTitle: 'Tarifs et modalités de licence',
@@ -1186,6 +1232,29 @@ export const translations: Record<Language, Translations> = {
           { bold: 'متابعة مركزية', text: 'رؤية واضحة لحالة الطرود والمرتجعات.' },
         ],
       },
+    },
+    mobileApp: {
+      badge: 'التطبيق المحمول',
+      heading: 'TechDesk DZ، حتى على هاتفك',
+      description: 'اكتشف واجهة تطبيق TechDesk Scanner وأهم وظائفه.',
+      supportingText: 'واجهة مصممة لتكون بسيطة وعملية في الاستخدام اليومي.',
+      featuresHeading: 'أهم ميزات التطبيق المحمول',
+      featuresSubtitle: 'تطبيق محمول سهل الاستخدام صُمم لمساعدتك في تسيير ومتابعة متجرك أينما كنت.',
+      feature1: {
+        title: 'لوحة التحكم',
+        desc: 'اطّلع على أهم المؤشرات المعروضة في واجهة التطبيق المحمول.',
+      },
+      feature2: {
+        title: 'التقارير',
+        desc: 'اطّلع على التقارير المتاحة لمتابعة نشاط متجرك.',
+      },
+      feature3: {
+        title: 'ماسح الباركود',
+        desc: 'استخدم كاميرا هاتفك لمسح الرموز الشريطية.',
+      },
+      downloadCta: 'تحميل تطبيق TechDesk Review (.apk)',
+      downloadDirect: 'تحميل مباشر APK • أندرويد',
+      zoomHint: 'تكبير الشاشة',
     },
     pricing: {
       sectionTitle: 'الأسعار والترخيص',

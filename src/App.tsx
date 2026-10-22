@@ -11,6 +11,7 @@ import { FeaturesCatalogue } from './components/FeaturesCatalogue';
 import { ShowcaseSection } from './components/ShowcaseSection';
 import { StandoutFeatures } from './components/StandoutFeatures';
 import { ArchitectureTrust } from './components/ArchitectureTrust';
+import { MobileAppSection } from './components/MobileAppSection';
 import { PricingSection } from './components/PricingSection';
 import { CustomizationSection } from './components/CustomizationSection';
 import { FAQSection } from './components/FAQSection';
@@ -108,6 +109,9 @@ export default function App() {
 
         {/* Windows Native Architecture & Offline Trust */}
         <ArchitectureTrust lang={lang} />
+
+        {/* Mobile App Features & Companion Screens */}
+        <MobileAppSection lang={lang} onOpenDownload={handleOpenDownload} />
 
         {/* Transparent Pricing & Licensing Rules (Free Trial vs Lifetime) */}
         <PricingSection lang={lang} onOpenDownload={handleOpenDownload} />
