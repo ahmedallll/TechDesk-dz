@@ -47,6 +47,9 @@ export const Header: React.FC<HeaderProps> = ({
         'faq',
         'personnalisation',
         'tarifs',
+        'mobile-app',
+        'differences',
+        'galerie',
         'catalogue',
         'fonctionnalites',
         'accueil',
@@ -136,7 +139,11 @@ export const Header: React.FC<HeaderProps> = ({
     { href: '#accueil', label: t.home },
     { href: '#fonctionnalites', label: t.features },
     { href: '#catalogue', label: t.catalogue },
+    { href: '#galerie', label: t.gallery },
+    { href: '#differences', label: t.standout },
+    { href: '#mobile-app', label: t.mobileApp },
     { href: '#tarifs', label: t.pricing },
+    { href: '#personnalisation', label: t.customization },
     { href: '#faq', label: t.faq },
     { href: '#contact', label: t.contact },
   ];
@@ -289,23 +296,6 @@ export const Header: React.FC<HeaderProps> = ({
                 </a>
               );
             })}
-
-            <a
-              href="#personnalisation"
-              onClick={() => handleNavClick('#personnalisation')}
-              className={`px-3.5 py-2.5 text-sm font-semibold rounded-xl transition-all duration-150 flex items-center justify-between ${
-                activeSection === '#personnalisation'
-                  ? `bg-purple-800/40 text-white font-bold ${
-                      isRtl ? 'border-r-2 border-purple-400' : 'border-l-2 border-purple-400'
-                    }`
-                  : 'text-purple-200/90 hover:text-white hover:bg-purple-900/30'
-              }`}
-            >
-              <span>{currentLang === 'ar' ? 'التخصيص حسب الطلب' : 'Personnalisation'}</span>
-              {activeSection === '#personnalisation' && (
-                <span className="w-1.5 h-1.5 rounded-full bg-purple-300 shadow-xs" />
-              )}
-            </a>
           </nav>
 
           {/* Catalogue Submenu Section */}
@@ -439,7 +429,7 @@ export const Header: React.FC<HeaderProps> = ({
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Main top header bar */}
-          <div className="flex items-center justify-between h-[64px] sm:h-[84px] lg:h-[90px] gap-3 lg:gap-4 xl:gap-6">
+          <div className="flex items-center justify-between h-[64px] sm:h-[84px] lg:h-[96px] gap-3 lg:gap-4 xl:gap-6">
             {/* 1. Brand Logo Anchor */}
             <a
               href="#accueil"
@@ -450,34 +440,64 @@ export const Header: React.FC<HeaderProps> = ({
               <TechDeskLogo size="md" showTagline={false} />
             </a>
 
-            {/* 2. Desktop Navigation Links (Compact, Evenly Spaced, No Wrapping) */}
+            {/* 2. Desktop Navigation Links (Arranged in 2 balanced lines to prevent overlap with CTA buttons) */}
             <nav
               aria-label="Navigation principale"
-              className="hidden lg:flex items-center gap-0.5 xl:gap-1 shrink-0"
+              className="hidden lg:flex flex-col items-center justify-center gap-1 xl:gap-1.5 shrink min-w-0 py-1"
             >
-              {navLinks.map((link) => {
-                const isActive = activeSection === link.href;
-                return (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => handleNavClick(link.href)}
-                    className={`relative whitespace-nowrap px-2.5 xl:px-3 py-1.5 xl:py-2 text-[13px] xl:text-[13.5px] font-semibold rounded-lg transition-all duration-150 focus-visible:ring-2 focus-visible:ring-purple-600 ${
-                      isActive
-                        ? 'text-purple-900 bg-[#F4EFFC] font-bold shadow-2xs'
-                        : 'text-[#241C42] hover:text-purple-700 hover:bg-[#F8F5FD]'
-                    }`}
-                  >
-                    <span>{link.label}</span>
-                    {isActive && (
-                      <span
-                        className="absolute bottom-0.5 inset-x-2 h-[2px] bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full"
-                        aria-hidden="true"
-                      />
-                    )}
-                  </a>
-                );
-              })}
+              {/* Line 1: Primary Product & Feature Navigation */}
+              <div className="flex items-center justify-center gap-0.5 xl:gap-1 flex-wrap">
+                {navLinks.slice(0, 7).map((link) => {
+                  const isActive = activeSection === link.href;
+                  return (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => handleNavClick(link.href)}
+                      className={`relative whitespace-nowrap px-2 xl:px-2.5 py-0.5 xl:py-1 text-[11.5px] xl:text-[12.5px] font-semibold rounded-lg transition-all duration-150 focus-visible:ring-2 focus-visible:ring-purple-600 ${
+                        isActive
+                          ? 'text-purple-900 bg-[#F4EFFC] font-bold shadow-2xs'
+                          : 'text-[#241C42] hover:text-purple-700 hover:bg-[#F8F5FD]'
+                      }`}
+                    >
+                      <span>{link.label}</span>
+                      {isActive && (
+                        <span
+                          className="absolute bottom-0 inset-x-1.5 h-[2px] bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full"
+                          aria-hidden="true"
+                        />
+                      )}
+                    </a>
+                  );
+                })}
+              </div>
+
+              {/* Line 2: Personalisation, FAQ, Contact */}
+              <div className="flex items-center justify-center gap-1 xl:gap-2 flex-wrap">
+                {navLinks.slice(7).map((link) => {
+                  const isActive = activeSection === link.href;
+                  return (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => handleNavClick(link.href)}
+                      className={`relative whitespace-nowrap px-2.5 xl:px-3 py-0.5 xl:py-1 text-[11.5px] xl:text-[12.5px] font-semibold rounded-lg transition-all duration-150 focus-visible:ring-2 focus-visible:ring-purple-600 ${
+                        isActive
+                          ? 'text-purple-900 bg-[#F4EFFC] font-bold shadow-2xs'
+                          : 'text-[#241C42] hover:text-purple-700 hover:bg-[#F8F5FD]'
+                      }`}
+                    >
+                      <span>{link.label}</span>
+                      {isActive && (
+                        <span
+                          className="absolute bottom-0 inset-x-1.5 h-[2px] bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full"
+                          aria-hidden="true"
+                        />
+                      )}
+                    </a>
+                  );
+                })}
+              </div>
             </nav>
 
             {/* 3. Desktop / Tablet Action Controls: Language Switcher & Compact Vertical Button Stack */}

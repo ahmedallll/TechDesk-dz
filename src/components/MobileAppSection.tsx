@@ -160,20 +160,12 @@ export const MobileAppSection: React.FC<MobileAppSectionProps> = ({ lang }) => {
                 }
               }}
               aria-label={t.heading}
-              className="group cursor-pointer relative max-w-[280px] sm:max-w-[310px] w-full"
+              className="group cursor-pointer relative max-w-[185px] sm:max-w-[280px] lg:max-w-[310px] w-full mx-auto lg:mx-0"
             >
-              {/* Phone Exterior Frame */}
-              <div className="relative bg-[#1A1333] p-3 rounded-[2.5rem] shadow-[0_20px_45px_rgba(25,19,48,0.22)] border-[3px] border-[#2C2152] transition-transform duration-300 group-hover:scale-[1.02]">
-                {/* Speaker / Camera Notch */}
-                <div className="flex justify-center items-center pb-2">
-                  <div className="w-16 h-3 bg-[#0E0920] rounded-full flex items-center justify-center">
-                    <div className="w-2 h-2 bg-[#1F183E] rounded-full mx-1" />
-                    <div className="w-6 h-1 bg-[#1F183E] rounded-full mx-1" />
-                  </div>
-                </div>
-
+              {/* Phone Exterior Frame - Ultra-slim edge frame */}
+              <div className="relative bg-gradient-to-b from-[#F3F0F8] via-[#E8E1F2] to-[#D8CEEA] p-1.5 rounded-2xl sm:rounded-[1.75rem] shadow-[0_14px_30px_rgba(109,40,217,0.12)] border border-[#CBC0E2] transition-transform duration-300 group-hover:scale-[1.01]">
                 {/* Screen Display Container */}
-                <div className="relative bg-[#140E29] rounded-[1.8rem] overflow-hidden border border-white/10 shadow-inner">
+                <div className="relative bg-white rounded-xl sm:rounded-[1.35rem] overflow-hidden border border-[#C5B7DE]/60 shadow-xs">
                   <img
                     src="/phonepic0.webp"
                     alt="TechDesk Mobile App Interface"
@@ -182,17 +174,12 @@ export const MobileAppSection: React.FC<MobileAppSectionProps> = ({ lang }) => {
                   />
 
                   {/* Expand Overlay */}
-                  <div className="absolute inset-0 bg-[#130E2E]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-[#191330]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
                     <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black/75 text-white text-xs font-semibold backdrop-blur-xs shadow-md">
                       <Maximize2 className="w-3.5 h-3.5 text-purple-300" />
                       <span>{t.zoomHint}</span>
                     </span>
                   </div>
-                </div>
-
-                {/* Bottom Home Indicator */}
-                <div className="pt-2 flex justify-center">
-                  <div className="w-20 h-1 bg-white/20 rounded-full" />
                 </div>
               </div>
             </div>
@@ -220,7 +207,7 @@ export const MobileAppSection: React.FC<MobileAppSectionProps> = ({ lang }) => {
               return (
                 <div
                   key={feature.id}
-                  className="bg-white rounded-2xl border border-[#E9E4F5] p-5 sm:p-6 shadow-[0_4px_16px_rgba(25,19,48,0.03)] hover:shadow-[0_12px_28px_rgba(109,40,217,0.1)] hover:border-purple-300 transition-all duration-200 flex flex-col h-full"
+                  className="bg-white rounded-2xl border border-[#E9E4F5] p-4 sm:p-6 shadow-[0_4px_16px_rgba(25,19,48,0.03)] hover:shadow-[0_12px_28px_rgba(109,40,217,0.1)] hover:border-purple-300 transition-all duration-200 flex flex-col h-full"
                 >
                   {/* Smartphone Frame Wrapper */}
                   <div
@@ -244,18 +231,11 @@ export const MobileAppSection: React.FC<MobileAppSectionProps> = ({ lang }) => {
                       }
                     }}
                     aria-label={feature.title}
-                    className="group cursor-pointer mx-auto max-w-[240px] sm:max-w-[260px] w-full mb-5"
+                    className="group cursor-pointer mx-auto max-w-[165px] sm:max-w-[240px] md:max-w-[260px] w-full mb-4 sm:mb-5"
                   >
-                    <div className="relative bg-[#1A1333] p-2.5 rounded-[2.2rem] shadow-[0_12px_30px_rgba(25,19,48,0.18)] border-2 border-[#2C2152] transition-transform duration-300 group-hover:scale-[1.02]">
-                      {/* Top notch */}
-                      <div className="flex justify-center items-center pb-1.5">
-                        <div className="w-12 h-2 bg-[#0E0920] rounded-full flex items-center justify-center">
-                          <div className="w-1.5 h-1.5 bg-[#1F183E] rounded-full" />
-                        </div>
-                      </div>
-
+                    <div className="relative bg-gradient-to-b from-[#F3F0F8] via-[#E8E1F2] to-[#D8CEEA] p-1.5 rounded-2xl shadow-[0_10px_24px_rgba(109,40,217,0.1)] border border-[#CBC0E2] transition-transform duration-300 group-hover:scale-[1.01]">
                       {/* Screen */}
-                      <div className="relative bg-[#140E29] rounded-[1.6rem] overflow-hidden border border-white/10 shadow-inner">
+                      <div className="relative bg-white rounded-xl overflow-hidden border border-[#C5B7DE]/60 shadow-xs">
                         <img
                           src={feature.image}
                           alt={feature.title}
@@ -264,17 +244,12 @@ export const MobileAppSection: React.FC<MobileAppSectionProps> = ({ lang }) => {
                         />
 
                         {/* Hover zoom hint */}
-                        <div className="absolute inset-0 bg-[#130E2E]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+                        <div className="absolute inset-0 bg-[#191330]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
                           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-black/75 text-white text-xs font-semibold backdrop-blur-xs shadow-md">
                             <Maximize2 className="w-3.5 h-3.5 text-purple-300" />
                             <span>{t.zoomHint}</span>
                           </span>
                         </div>
-                      </div>
-
-                      {/* Bottom bar */}
-                      <div className="pt-1.5 flex justify-center">
-                        <div className="w-16 h-1 bg-white/20 rounded-full" />
                       </div>
                     </div>
                   </div>
@@ -317,16 +292,16 @@ export const MobileAppSection: React.FC<MobileAppSectionProps> = ({ lang }) => {
           onClick={handleCloseModal}
         >
           <div
-            className="relative bg-[#1A1333] border border-white/20 rounded-3xl max-w-sm sm:max-w-md w-full overflow-hidden shadow-2xl p-4 sm:p-5 flex flex-col items-center animate-in fade-in zoom-in-95 duration-200"
+            className="relative bg-gradient-to-b from-[#FAF8FD] via-[#F1ECF8] to-[#E3D9F2] border-2 border-[#CBC0E2] rounded-3xl max-w-sm sm:max-w-md w-full overflow-hidden shadow-2xl p-4 sm:p-5 flex flex-col items-center animate-in fade-in zoom-in-95 duration-200"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="w-full flex items-center justify-between pb-3 mb-3 border-b border-white/10 text-white">
+            <div className="w-full flex items-center justify-between pb-3 mb-3 border-b border-[#D5CBE5] text-[#191330]">
               <div>
-                <h4 id="modal-title" className="text-base font-bold text-white">
+                <h4 id="modal-title" className="text-base font-bold text-[#191330]">
                   {activeModalImage.title}
                 </h4>
-                <p className="text-xs text-purple-200 mt-0.5 line-clamp-1">
+                <p className="text-xs text-[#5D507B] mt-0.5 line-clamp-1">
                   {activeModalImage.description}
                 </p>
               </div>
@@ -334,7 +309,7 @@ export const MobileAppSection: React.FC<MobileAppSectionProps> = ({ lang }) => {
               <button
                 type="button"
                 onClick={handleCloseModal}
-                className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors"
+                className="p-1.5 rounded-lg bg-purple-100 hover:bg-purple-200 text-[#2C2152] transition-colors cursor-pointer"
                 aria-label={lang === 'ar' ? 'إغلاق' : 'Fermer'}
               >
                 <X className="w-5 h-5" />
@@ -342,7 +317,7 @@ export const MobileAppSection: React.FC<MobileAppSectionProps> = ({ lang }) => {
             </div>
 
             {/* Modal Image Display */}
-            <div className="max-h-[75vh] overflow-y-auto rounded-2xl border border-white/10">
+            <div className="max-h-[75vh] overflow-y-auto rounded-2xl border border-[#C5B7DE]/80 bg-white shadow-md">
               <img
                 src={activeModalImage.src}
                 alt={activeModalImage.title}

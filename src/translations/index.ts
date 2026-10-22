@@ -12,7 +12,11 @@ export interface Translations {
     home: string;
     features: string;
     catalogue: string;
+    gallery: string;
+    standout: string;
+    mobileApp: string;
     pricing: string;
+    customization: string;
     faq: string;
     contact: string;
     downloadTrial: string;
@@ -279,7 +283,11 @@ export const translations: Record<Language, Translations> = {
       home: 'Accueil',
       features: 'Fonctionnalités',
       catalogue: 'Catalogue',
+      gallery: 'Galerie',
+      standout: 'IA & Livraison',
+      mobileApp: 'App Mobile',
       pricing: 'Tarifs',
+      customization: 'Personnalisation',
       faq: 'FAQ',
       contact: 'Contact',
       downloadTrial: "Télécharger l'essai gratuit",
@@ -895,7 +903,11 @@ export const translations: Record<Language, Translations> = {
       home: 'الرئيسية',
       features: 'المميزات',
       catalogue: 'دليل الوحدات',
+      gallery: 'معرض الصور',
+      standout: 'الذكاء الاصطناعي والتوصيل',
+      mobileApp: 'تطبيق الهاتف',
       pricing: 'الأسعار والترخيص',
+      customization: 'التخصيص حسب الطلب',
       faq: 'الأسئلة الشائعة',
       contact: 'اتصل بنا',
       downloadTrial: 'تحميل النسخة التجريبية مجاناً',
