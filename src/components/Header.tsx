@@ -157,6 +157,106 @@ export const Header: React.FC<HeaderProps> = ({
     setMobileMenuOpen(false);
   };
 
+  const navScrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollStart, setScrollStart] = useState(0);
+  const [hasDragged, setHasDragged] = useState(false);
+
+  const checkNavScroll = () => {
+    if (!navScrollRef.current) return;
+    const { scrollLeft, scrollWidth, clientWidth } = navScrollRef.current;
+    const maxScroll = scrollWidth - clientWidth;
+    if (maxScroll <= 3) {
+      setCanScrollLeft(false);
+      setCanScrollRight(false);
+      return;
+    }
+    if (isRtl) {
+      const currentScroll = Math.abs(scrollLeft);
+      setCanScrollLeft(currentScroll < maxScroll - 4);
+      setCanScrollRight(currentScroll > 4);
+    } else {
+      setCanScrollLeft(scrollLeft > 4);
+      setCanScrollRight(scrollLeft < maxScroll - 4);
+    }
+  };
+
+  useEffect(() => {
+    checkNavScroll();
+    const handleResize = () => checkNavScroll();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [currentLang]);
+
+  // Center active link when activeSection changes
+  useEffect(() => {
+    if (activeSection && navScrollRef.current) {
+      const activeEl = navScrollRef.current.querySelector<HTMLElement>(
+        `[data-nav-href="${activeSection}"]`
+      );
+      if (activeEl) {
+        activeEl.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'center',
+        });
+      }
+    }
+    const timer = setTimeout(checkNavScroll, 350);
+    return () => clearTimeout(timer);
+  }, [activeSection]);
+
+  const handleSlide = (direction: 'left' | 'right') => {
+    if (!navScrollRef.current) return;
+    const offset = direction === 'left' ? -220 : 220;
+    const scrollAmount = isRtl ? -offset : offset;
+    navScrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    setTimeout(checkNavScroll, 250);
+  };
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!navScrollRef.current) return;
+    setIsDragging(true);
+    setHasDragged(false);
+    setStartX(e.pageX - navScrollRef.current.offsetLeft);
+    setScrollStart(navScrollRef.current.scrollLeft);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !navScrollRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - navScrollRef.current.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    if (Math.abs(x - startX) > 4) {
+      setHasDragged(true);
+    }
+    navScrollRef.current.scrollLeft = scrollStart - walk;
+    checkNavScroll();
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleWheel = (e: React.WheelEvent) => {
+    if (!navScrollRef.current) return;
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      navScrollRef.current.scrollLeft += e.deltaY;
+      checkNavScroll();
+    }
+  };
+
+  const handleLinkClick = (e: React.MouseEvent, href: string) => {
+    if (hasDragged) {
+      e.preventDefault();
+      return;
+    }
+    handleNavClick(href);
+  };
+
   return (
     <>
       {/* 0. Persistent Mobile Edge Arrow Toggle Tab */}
@@ -429,7 +529,7 @@ export const Header: React.FC<HeaderProps> = ({
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Main top header bar */}
-          <div className="flex items-center justify-between h-[64px] sm:h-[84px] lg:h-[96px] gap-3 lg:gap-4 xl:gap-6">
+          <div className="flex items-center justify-between h-[64px] sm:h-[80px] lg:h-[82px] gap-2 lg:gap-3 xl:gap-4">
             {/* 1. Brand Logo Anchor */}
             <a
               href="#accueil"
@@ -440,48 +540,48 @@ export const Header: React.FC<HeaderProps> = ({
               <TechDeskLogo size="md" showTagline={false} />
             </a>
 
-            {/* 2. Desktop Navigation Links (Arranged in 2 balanced lines to prevent overlap with CTA buttons) */}
-            <nav
-              aria-label="Navigation principale"
-              className="hidden lg:flex flex-col items-center justify-center gap-1 xl:gap-1.5 shrink min-w-0 py-1"
-            >
-              {/* Line 1: Primary Product & Feature Navigation */}
-              <div className="flex items-center justify-center gap-0.5 xl:gap-1 flex-wrap">
-                {navLinks.slice(0, 7).map((link) => {
-                  const isActive = activeSection === link.href;
-                  return (
-                    <a
-                      key={link.href}
-                      href={link.href}
-                      onClick={() => handleNavClick(link.href)}
-                      className={`relative whitespace-nowrap px-2 xl:px-2.5 py-0.5 xl:py-1 text-[11.5px] xl:text-[12.5px] font-semibold rounded-lg transition-all duration-150 focus-visible:ring-2 focus-visible:ring-purple-600 ${
-                        isActive
-                          ? 'text-purple-900 bg-[#F4EFFC] font-bold shadow-2xs'
-                          : 'text-[#241C42] hover:text-purple-700 hover:bg-[#F8F5FD]'
-                      }`}
-                    >
-                      <span>{link.label}</span>
-                      {isActive && (
-                        <span
-                          className="absolute bottom-0 inset-x-1.5 h-[2px] bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full"
-                          aria-hidden="true"
-                        />
-                      )}
-                    </a>
-                  );
-                })}
-              </div>
+            {/* 2. Desktop Sliding Single-Line Navigation */}
+            <div className="hidden lg:flex items-center min-w-0 flex-1 max-w-[540px] xl:max-w-[700px] 2xl:max-w-[820px] relative px-1 mx-1 xl:mx-2">
+              {/* Left Slide Arrow */}
+              {canScrollLeft && (
+                <button
+                  type="button"
+                  onClick={() => handleSlide('left')}
+                  className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-6 h-6 flex items-center justify-center rounded-full bg-white/95 text-purple-700 hover:text-purple-950 shadow-md hover:bg-white border border-purple-200 transition-all cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-600"
+                  aria-label="Faire défiler vers la gauche"
+                >
+                  <ChevronLeft className="w-3.5 h-3.5 shrink-0" />
+                </button>
+              )}
 
-              {/* Line 2: Personalisation, FAQ, Contact */}
-              <div className="flex items-center justify-center gap-1 xl:gap-2 flex-wrap">
-                {navLinks.slice(7).map((link) => {
+              {/* Left edge subtle fade gradient */}
+              {canScrollLeft && (
+                <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
+              )}
+
+              {/* Scrollable / Draggable Single Line Nav Track */}
+              <nav
+                ref={navScrollRef}
+                onScroll={checkNavScroll}
+                onWheel={handleWheel}
+                onMouseDown={handleMouseDown}
+                onMouseMove={handleMouseMove}
+                onMouseUp={handleMouseUp}
+                onMouseLeave={handleMouseUp}
+                aria-label="Navigation principale"
+                className={`flex items-center gap-1 xl:gap-1.5 overflow-x-auto select-none py-1.5 px-3 transition-colors ${
+                  isDragging ? 'cursor-grabbing' : 'cursor-grab'
+                } [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden`}
+              >
+                {navLinks.map((link) => {
                   const isActive = activeSection === link.href;
                   return (
                     <a
                       key={link.href}
+                      data-nav-href={link.href}
                       href={link.href}
-                      onClick={() => handleNavClick(link.href)}
-                      className={`relative whitespace-nowrap px-2.5 xl:px-3 py-0.5 xl:py-1 text-[11.5px] xl:text-[12.5px] font-semibold rounded-lg transition-all duration-150 focus-visible:ring-2 focus-visible:ring-purple-600 ${
+                      onClick={(e) => handleLinkClick(e, link.href)}
+                      className={`relative whitespace-nowrap px-3 py-1.5 text-xs xl:text-[13px] font-semibold rounded-lg transition-all duration-150 focus-visible:ring-2 focus-visible:ring-purple-600 shrink-0 ${
                         isActive
                           ? 'text-purple-900 bg-[#F4EFFC] font-bold shadow-2xs'
                           : 'text-[#241C42] hover:text-purple-700 hover:bg-[#F8F5FD]'
@@ -490,15 +590,32 @@ export const Header: React.FC<HeaderProps> = ({
                       <span>{link.label}</span>
                       {isActive && (
                         <span
-                          className="absolute bottom-0 inset-x-1.5 h-[2px] bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full"
+                          className="absolute bottom-0 inset-x-2 h-[2.5px] bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full"
                           aria-hidden="true"
                         />
                       )}
                     </a>
                   );
                 })}
-              </div>
-            </nav>
+              </nav>
+
+              {/* Right edge subtle fade gradient */}
+              {canScrollRight && (
+                <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white via-white/80 to-transparent z-10" />
+              )}
+
+              {/* Right Slide Arrow */}
+              {canScrollRight && (
+                <button
+                  type="button"
+                  onClick={() => handleSlide('right')}
+                  className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-6 h-6 flex items-center justify-center rounded-full bg-white/95 text-purple-700 hover:text-purple-950 shadow-md hover:bg-white border border-purple-200 transition-all cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-600"
+                  aria-label="Faire défiler vers la droite"
+                >
+                  <ChevronRight className="w-3.5 h-3.5 shrink-0" />
+                </button>
+              )}
+            </div>
 
             {/* 3. Desktop / Tablet Action Controls: Language Switcher & Compact Vertical Button Stack */}
             <div className="hidden sm:flex items-center gap-2 xl:gap-3 shrink-0">
