@@ -38,9 +38,12 @@ export interface SiteConfig {
     isOnlinePurchaseReady: boolean;
     currency: string;
     trialPrice: number;
-    // Le prix commercial exact n'est pas inventé et reste configurable
+    regularPriceDisplayFr: string;
+    regularPriceDisplayAr: string;
     lifetimePriceDisplayFr: string;
     lifetimePriceDisplayAr: string;
+    discountBadgeFr: string;
+    discountBadgeAr: string;
   };
   contact: {
     // Informations de contact réelles ou configurables
@@ -95,8 +98,12 @@ export const siteConfig: SiteConfig = {
     isOnlinePurchaseReady: false,
     currency: 'DZD',
     trialPrice: 0,
-    lifetimePriceDisplayFr: 'Tarif sur devis / Commande directe',
-    lifetimePriceDisplayAr: 'السعر عند الطلب / ترخيص مباشر',
+    regularPriceDisplayFr: '18 000 DA',
+    regularPriceDisplayAr: '18 000 د.ج',
+    lifetimePriceDisplayFr: '15 000 DA',
+    lifetimePriceDisplayAr: '15 000 د.ج',
+    discountBadgeFr: 'Offre Promo (-3 000 DA)',
+    discountBadgeAr: 'عرض ترويجي • خصم 3 000 د.ج',
   },
   contact: {
     phone: '+213552947563',

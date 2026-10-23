@@ -107,11 +107,11 @@ export default function App() {
         {/* Standout Features: Integrated AI Assistant & Delivery Management */}
         <StandoutFeatures lang={lang} />
 
-        {/* Windows Native Architecture & Offline Trust */}
-        <ArchitectureTrust lang={lang} />
-
         {/* Mobile App Features & Companion Screens */}
         <MobileAppSection lang={lang} onOpenDownload={handleOpenDownload} />
+
+        {/* Windows Native Architecture & Offline Trust */}
+        <ArchitectureTrust lang={lang} />
 
         {/* Transparent Pricing & Licensing Rules (Free Trial vs Lifetime) */}
         <PricingSection lang={lang} onOpenDownload={handleOpenDownload} />

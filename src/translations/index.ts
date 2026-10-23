@@ -1297,7 +1297,7 @@ export const translations: Record<Language, Translations> = {
         tagline: 'أداة تسيير مستمرة لمحلك التجاري، بدون أي اشتراكات شهرية متكررة.',
         price: 'شراء لمرة واحدة',
         priceSubtext: 'ترخيص نهائي لكل محطة عمل',
-        duration: 'مدى الحياة بدون انتهاء',
+        duration: 'مدى الحياة ',
         cta: 'طلب الترخيص الدائم',
         features: [
           'استخدام دائم وغير محدد المدة دون توقف',

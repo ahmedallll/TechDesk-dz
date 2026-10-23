@@ -155,6 +155,18 @@ export const Header: React.FC<HeaderProps> = ({
   const handleNavClick = (href: string) => {
     setActiveSection(href);
     setMobileMenuOpen(false);
+
+    const targetId = href.replace('#', '');
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      const headerOffset = 85;
+      const elementPosition = targetElement.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
+    }
   };
 
   const navScrollRef = useRef<HTMLDivElement>(null);
@@ -227,18 +239,22 @@ export const Header: React.FC<HeaderProps> = ({
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDragging || !navScrollRef.current) return;
-    e.preventDefault();
     const x = e.pageX - navScrollRef.current.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    if (Math.abs(x - startX) > 4) {
+    const diff = Math.abs(x - startX);
+    if (diff > 10) {
       setHasDragged(true);
+      e.preventDefault();
+      const walk = (x - startX) * 1.5;
+      navScrollRef.current.scrollLeft = scrollStart - walk;
+      checkNavScroll();
     }
-    navScrollRef.current.scrollLeft = scrollStart - walk;
-    checkNavScroll();
   };
 
   const handleMouseUp = () => {
     setIsDragging(false);
+    setTimeout(() => {
+      setHasDragged(false);
+    }, 60);
   };
 
   const handleWheel = (e: React.WheelEvent) => {
@@ -254,6 +270,7 @@ export const Header: React.FC<HeaderProps> = ({
       e.preventDefault();
       return;
     }
+    e.preventDefault();
     handleNavClick(href);
   };
 

@@ -4,6 +4,7 @@
   :root {
     --font-latin: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-arabic: 'Readex Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-price: 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
     /* TechDesk DZ Visual Theme Tokens */
@@ -57,4 +58,11 @@
 }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #a996da;
+}
+
+/* Attractive, crisp geometric typography for prices & figures */
+.font-price {
+  font-family: var(--font-price);
+  font-feature-settings: 'tnum' 1, 'lnum' 1;
+  font-variant-numeric: tabular-nums lining-nums;
 }

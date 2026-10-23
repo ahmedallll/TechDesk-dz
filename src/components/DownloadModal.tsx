@@ -37,10 +37,10 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({
     lang === 'ar'
       ? type === 'trial'
         ? 'السلام عليكم، قمت بتحميل برنامج TechDesk DZ وتثبيته على جهازي. أود الحصول على مفتاح ترخيص التجربة المجانية لمدة 3 أيام.'
-        : 'السلام عليكم، أود الاستفسار حول برنامج TechDesk DZ والحصول على تفاصيل الترخيص الدائم.'
+        : 'السلام عليكم، أود الاستفسار حول برنامج TechDesk DZ والاستفادة من عرض الترخيص الدائم بسعر 15 000 د.ج.'
       : type === 'trial'
         ? "Bonjour, j'ai téléchargé et installé TechDesk DZ sur mon PC Windows. Je souhaite obtenir ma clé d'activation pour l'essai gratuit de 3 jours."
-        : 'Bonjour, je souhaite obtenir des informations sur TechDesk DZ concernant la licence à vie.'
+        : 'Bonjour, je souhaite commander la licence à vie de TechDesk DZ au tarif promotionnel de 15 000 DA.'
   );
 
   const installerUrl =
@@ -214,12 +214,24 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({
           ) : (
             <>
               {/* Purchase Section */}
-              <div className="bg-[#FAF8FE] border border-purple-100 rounded-xl p-4 text-xs space-y-2">
-                <div className="flex items-center gap-2 font-bold text-purple-900">
-                  <Sparkles className="w-4 h-4 text-purple-700 shrink-0" />
-                  <span>
-                    {isRtl ? 'ترخيص دائم رسمي' : 'Licence définitive officielle'}
-                  </span>
+              <div className="bg-[#FAF8FE] border border-purple-100 rounded-xl p-4 text-xs space-y-3">
+                <div className="flex items-center justify-between gap-2 flex-wrap">
+                  <div className="flex items-center gap-2 font-bold text-purple-900">
+                    <Sparkles className="w-4 h-4 text-purple-700 shrink-0" />
+                    <span>
+                      {isRtl ? 'ترخيص دائم رسمي' : 'Licence définitive officielle'}
+                    </span>
+                  </div>
+                  <div className="inline-flex items-center gap-2 font-price px-3 py-1 rounded-lg bg-white border border-purple-200/80 shadow-2xs">
+                    <span className="text-slate-400 line-through text-xs font-semibold inline-flex items-center gap-0.5">
+                      <bdi dir="ltr">18 000</bdi>
+                      <span>{isRtl ? 'د.ج' : 'DA'}</span>
+                    </span>
+                    <span className="font-black text-sm text-[#191330] inline-flex items-center gap-0.5">
+                      <bdi dir="ltr">15 000</bdi>
+                      <span className="text-purple-700 font-bold">{isRtl ? 'د.ج' : 'DA'}</span>
+                    </span>
+                  </div>
                 </div>
                 <p className="text-[#554D74] leading-relaxed">
                   {t.purchaseStatusDesc}

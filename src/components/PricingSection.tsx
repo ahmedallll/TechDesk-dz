@@ -7,6 +7,7 @@ import {
   CheckCircle2,
   ChevronDown,
   Layers,
+  Sparkles,
 } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 import { Language, translations } from '../translations';
@@ -30,7 +31,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center space-y-2">
           <div className="text-xs font-bold text-purple-700 uppercase tracking-wider">
-            {lang === 'ar' ? 'شفافية وبدون مفاجآت' : 'Modalités d’accès'}
+            {lang === 'ar' ? 'بكل شفافية ' : 'Modalités d’accès'}
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#191330] tracking-tight">
             {t.sectionTitle}
@@ -66,7 +67,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
               {/* Price and Duration */}
               <div className="py-4 border-y border-purple-100/80 space-y-1">
                 <div className="flex items-baseline gap-2">
-                  <span className="text-3xl sm:text-4xl font-extrabold font-mono text-[#191330]">
+                  <span className="text-3xl sm:text-4xl font-extrabold font-price text-[#191330] tracking-tight">
                     {t.trialOffer.price}
                   </span>
                   <span className="text-xs font-semibold text-purple-700 bg-purple-100/60 px-2 py-0.5 rounded">
@@ -139,16 +140,40 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
               </p>
 
               {/* Price and Duration */}
-              <div className="py-4 border-y border-purple-100/80 space-y-1">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-xl sm:text-2xl font-extrabold text-[#191330]">
-                    {lang === 'ar'
-                      ? siteConfig.licensing.lifetimePriceDisplayAr
-                      : siteConfig.licensing.lifetimePriceDisplayFr}
+              <div className="py-4 border-y border-purple-100/80 space-y-2.5">
+                {/* Regular strikethrough price + promo badge */}
+                <div className="flex items-center gap-2.5 flex-wrap">
+                  <span className="text-sm sm:text-base font-semibold text-slate-400 line-through decoration-slate-400 decoration-1.5 inline-flex items-center gap-1 font-price">
+                    <bdi dir="ltr">18 000</bdi>
+                    <span>{lang === 'ar' ? 'د.ج' : 'DA'}</span>
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-rose-50 text-rose-700 border border-rose-200/90 shadow-2xs">
+                    <Sparkles className="w-3 h-3 text-rose-500 shrink-0" />
+                    <span>{lang === 'ar' ? 'عرض ترويجي • خصم' : 'Offre Promo • Remise'}</span>
+                    <bdi dir="ltr" className="font-extrabold font-price text-rose-700">
+                      {lang === 'ar' ? '3 000 د.ج' : '-3 000 DA'}
+                    </bdi>
                   </span>
                 </div>
-                <div className="text-xs text-purple-700 font-semibold">
-                  {t.lifetimeOffer.priceSubtext}
+
+                {/* Promo current price & Duration badge */}
+                <div className="flex items-baseline gap-3 flex-wrap">
+                  <div className="inline-flex items-baseline gap-1.5 font-price">
+                    <bdi dir="ltr" className="text-4xl sm:text-5xl font-black tracking-tight text-[#191330] drop-shadow-2xs">
+                      15 000
+                    </bdi>
+                    <span className="text-xl sm:text-2xl font-bold text-purple-700 font-price">
+                      {lang === 'ar' ? 'د.ج' : 'DA'}
+                    </span>
+                  </div>
+                  <span className="text-xs font-bold text-purple-800 bg-purple-100/90 px-2.5 py-1 rounded-lg border border-purple-200/80 shadow-2xs">
+                    {t.lifetimeOffer.duration}
+                  </span>
+                </div>
+
+                <div className="text-xs text-purple-900 font-semibold flex items-center gap-1.5">
+                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-purple-600 shrink-0"></span>
+                  <span>{t.lifetimeOffer.priceSubtext}</span>
                 </div>
               </div>
 
