@@ -144,7 +144,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
                 {/* Regular strikethrough price + promo badge */}
                 <div className="flex items-center gap-2.5 flex-wrap">
                   <span className="text-sm sm:text-base font-semibold text-slate-400 line-through decoration-slate-400 decoration-1.5 inline-flex items-center gap-1 font-price">
-                    <bdi dir="ltr">18 000</bdi>
+                    <bdi dir="ltr">13 000</bdi>
                     <span>{lang === 'ar' ? 'د.ج' : 'DA'}</span>
                   </span>
                   <span className="inline-flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-rose-50 text-rose-700 border border-rose-200/90 shadow-2xs">
@@ -160,7 +160,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
                 <div className="flex items-baseline gap-3 flex-wrap">
                   <div className="inline-flex items-baseline gap-1.5 font-price">
                     <bdi dir="ltr" className="text-4xl sm:text-5xl font-black tracking-tight text-[#191330] drop-shadow-2xs">
-                      15 000
+                      10 000
                     </bdi>
                     <span className="text-xl sm:text-2xl font-bold text-purple-700 font-price">
                       {lang === 'ar' ? 'د.ج' : 'DA'}

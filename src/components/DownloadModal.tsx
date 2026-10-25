@@ -37,10 +37,10 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({
     lang === 'ar'
       ? type === 'trial'
         ? 'السلام عليكم، قمت بتحميل برنامج TechDesk DZ وتثبيته على جهازي. أود الحصول على مفتاح ترخيص التجربة المجانية لمدة 3 أيام.'
-        : 'السلام عليكم، أود الاستفسار حول برنامج TechDesk DZ والاستفادة من عرض الترخيص الدائم بسعر 15 000 د.ج.'
+        : 'السلام عليكم، أود الاستفسار حول برنامج TechDesk DZ والاستفادة من عرض الترخيص الدائم بسعر 10 000 د.ج.'
       : type === 'trial'
         ? "Bonjour, j'ai téléchargé et installé TechDesk DZ sur mon PC Windows. Je souhaite obtenir ma clé d'activation pour l'essai gratuit de 3 jours."
-        : 'Bonjour, je souhaite commander la licence à vie de TechDesk DZ au tarif promotionnel de 15 000 DA.'
+        : 'Bonjour, je souhaite commander la licence à vie de TechDesk DZ au tarif promotionnel de 10 000 DA.'
   );
 
   const installerUrl =
@@ -224,11 +224,11 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({
                   </div>
                   <div className="inline-flex items-center gap-2 font-price px-3 py-1 rounded-lg bg-white border border-purple-200/80 shadow-2xs">
                     <span className="text-slate-400 line-through text-xs font-semibold inline-flex items-center gap-0.5">
-                      <bdi dir="ltr">18 000</bdi>
+                      <bdi dir="ltr">13 000</bdi>
                       <span>{isRtl ? 'د.ج' : 'DA'}</span>
                     </span>
                     <span className="font-black text-sm text-[#191330] inline-flex items-center gap-0.5">
-                      <bdi dir="ltr">15 000</bdi>
+                      <bdi dir="ltr">10 000</bdi>
                       <span className="text-purple-700 font-bold">{isRtl ? 'د.ج' : 'DA'}</span>
                     </span>
                   </div>
