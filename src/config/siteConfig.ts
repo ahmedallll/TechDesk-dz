@@ -32,6 +32,11 @@ export interface SiteConfig {
     androidScannerUrl: string;
     androidScannerFileName: string;
   };
+  media: {
+    demoVideoId: string;
+    demoVideoUrl: string;
+    demoVideoEmbedUrl: string;
+  };
   licensing: {
     // Si null ou vide, le bouton ouvre la modale de contact/commande
     lifetimePurchaseUrl: string | null;
@@ -92,6 +97,11 @@ export const siteConfig: SiteConfig = {
       'https://github.com/ahmedallll/TechDesk-Review/releases/download/v1.0.0/TechDesk.Review.apk',
     androidScannerFileName: 'TechDesk-Review.apk',
   },
+  media: {
+    demoVideoId: 'QwJUhLTmNmc',
+    demoVideoUrl: 'https://youtu.be/QwJUhLTmNmc',
+    demoVideoEmbedUrl: 'https://www.youtube-nocookie.com/embed/QwJUhLTmNmc',
+  },
   licensing: {
     // Maintenu à null jusqu'à l'implémentation du flux de paiement/commande
     lifetimePurchaseUrl: null,
@@ -119,6 +129,6 @@ export const siteConfig: SiteConfig = {
   social: {
     facebook: '',
     linkedin: '',
-    youtube: '',
+    youtube: 'https://youtu.be/QwJUhLTmNmc',
   },
 };

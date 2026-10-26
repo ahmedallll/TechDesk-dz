@@ -9,6 +9,7 @@ import { Hero } from './components/Hero';
 import { ProblemSolution } from './components/ProblemSolution';
 import { FeaturesCatalogue } from './components/FeaturesCatalogue';
 import { ShowcaseSection } from './components/ShowcaseSection';
+import { VideoSection } from './components/VideoSection';
 import { StandoutFeatures } from './components/StandoutFeatures';
 import { ArchitectureTrust } from './components/ArchitectureTrust';
 import { MobileAppSection } from './components/MobileAppSection';
@@ -112,6 +113,9 @@ export default function App() {
 
         {/* Windows Native Architecture & Offline Trust */}
         <ArchitectureTrust lang={lang} />
+
+        {/* Video Showcase & Feature Demonstration */}
+        <VideoSection lang={lang} onOpenDownload={handleOpenDownload} />
 
         {/* Transparent Pricing & Licensing Rules (Free Trial vs Lifetime) */}
         <PricingSection lang={lang} onOpenDownload={handleOpenDownload} />

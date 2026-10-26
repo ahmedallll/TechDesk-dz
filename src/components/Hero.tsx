@@ -1,5 +1,5 @@
 import React from 'react';
-import { Download, ArrowRight, ShieldCheck, Smartphone } from 'lucide-react';
+import { Download, Sparkles, ShieldCheck, Smartphone, Play } from 'lucide-react';
 import { DesktopAppPreview } from './DesktopAppPreview';
 import { Language, translations } from '../translations';
 import { siteConfig } from '../config/siteConfig';
@@ -37,37 +37,102 @@ export const Hero: React.FC<HeroProps> = ({ lang, onOpenDownload }) => {
               {t.supportingText}
             </p>
 
-            {/* Call to Actions */}
-            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            {/* Reorganized 4 Action Cards Grid (Balanced informative text, visual hierarchy: Blue > Green > Orange > Purple) */}
+            <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
+              {/* 1. Windows Desktop Trial - Blue (Priority 1: Largest interest & luminous glow) */}
               <button
                 type="button"
                 onClick={() => onOpenDownload('trial')}
-                className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 text-sm sm:text-base font-bold text-white bg-gradient-to-r from-purple-700 via-purple-600 to-indigo-600 hover:from-purple-800 hover:via-purple-700 hover:to-indigo-700 active:brightness-95 rounded-xl shadow-md hover:shadow-lg transition-all focus-visible:ring-2 focus-visible:ring-purple-600 cursor-pointer"
+                className="group relative flex items-center gap-3 px-3.5 sm:px-4 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl bg-gradient-to-r from-[#2052F5] via-[#2450EC] to-[#143ED8] hover:from-[#1845E0] hover:to-[#0F32BD] text-white shadow-[0_8px_24px_rgba(32,82,245,0.40)] hover:shadow-[0_12px_28px_rgba(32,82,245,0.52)] ring-2 ring-blue-400/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer text-left rtl:text-right min-h-[60px] sm:min-h-[64px]"
               >
-                <Download className="w-5 h-5 shrink-0" />
-                <span>{t.ctaPrimary}</span>
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/25 backdrop-blur-xs ring-1 ring-white/40 flex items-center justify-center shrink-0 group-hover:bg-white/35 group-hover:scale-105 transition-all shadow-xs">
+                  <Download className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="text-xs sm:text-sm font-extrabold text-white leading-tight">
+                    {t.ctaPrimary}
+                  </div>
+                  <div className="text-[11px] text-blue-100 font-medium mt-0.5 leading-none">
+                    {t.ctaPrimarySub}
+                  </div>
+                </div>
               </button>
 
-              <a
-                href="#fonctionnalites"
-                className="inline-flex items-center justify-center gap-2 px-5 py-3.5 text-sm sm:text-base font-semibold text-[#282148] hover:text-purple-700 bg-white hover:bg-[#F6F2FD] border border-purple-200/80 rounded-xl shadow-2xs transition-colors focus-visible:ring-2 focus-visible:ring-purple-600"
-              >
-                <span>{t.ctaSecondary}</span>
-                <ArrowRight className={`w-4 h-4 shrink-0 ${isRtl ? 'rotate-180' : ''}`} />
-              </a>
-            </div>
-
-            {/* Phone App Direct Download Button */}
-            <div className="pt-1">
+              {/* 2. Android Mobile App - Green (Priority 2: Solid emerald) */}
               <a
                 href={siteConfig.downloads.androidScannerUrl}
                 download={siteConfig.downloads.androidScannerFileName}
-                className="inline-flex items-center gap-2.5 px-4 py-2.5 text-xs sm:text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 active:bg-blue-800 rounded-xl shadow-xs hover:shadow-md transition-all focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 cursor-pointer group"
+                className="group flex items-center gap-3 px-3.5 sm:px-4 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl bg-gradient-to-r from-[#008A52] via-[#007C48] to-[#016E3F] hover:from-[#007B48] hover:to-[#016036] text-white shadow-[0_4px_16px_rgba(0,138,82,0.28)] hover:shadow-[0_6px_20px_rgba(0,138,82,0.38)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer text-left rtl:text-right min-h-[60px] sm:min-h-[64px]"
               >
-                <div className="w-6 h-6 rounded-lg bg-white/20 text-white flex items-center justify-center shrink-0 group-hover:bg-white/30 transition-colors">
-                  <Smartphone className="w-3.5 h-3.5" />
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/20 backdrop-blur-xs flex items-center justify-center shrink-0 group-hover:bg-white/30 group-hover:scale-105 transition-all shadow-2xs">
+                  <Smartphone className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                 </div>
-                <span>{t.phoneAppCta}</span>
+                <div className="min-w-0 flex-1">
+                  <div className="text-xs sm:text-sm font-bold text-white leading-tight">
+                    {t.phoneAppCta}
+                  </div>
+                  <div className="text-[11px] text-emerald-100 font-medium mt-0.5 leading-none">
+                    {t.phoneAppSub}
+                  </div>
+                </div>
+              </a>
+
+              {/* 3. Video Showcase - Orange (Priority 3: Moderate warm amber) */}
+              <a
+                href="#video"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const el = document.getElementById('video');
+                  if (el) {
+                    const headerOffset = 85;
+                    const elementPosition = el.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                    window.history.pushState(null, '', '#video');
+                  }
+                }}
+                className="group flex items-center gap-3 px-3.5 sm:px-4 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl bg-gradient-to-r from-[#D96B00]/92 via-[#C85D00]/92 to-[#B34E00]/92 hover:from-[#D96B00] hover:to-[#B34E00] text-white shadow-[0_2px_10px_rgba(217,107,0,0.20)] hover:shadow-[0_4px_16px_rgba(217,107,0,0.30)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer text-left rtl:text-right min-h-[60px] sm:min-h-[64px]"
+              >
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/18 backdrop-blur-xs flex items-center justify-center shrink-0 group-hover:bg-white/25 group-hover:scale-105 transition-all shadow-2xs">
+                  <Play className="w-4 h-4 sm:w-5 sm:h-5 text-white fill-current ml-0.5" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="text-xs sm:text-sm font-semibold text-white/95 leading-tight">
+                    {t.videoCta}
+                  </div>
+                  <div className="text-[11px] text-amber-100/90 font-medium mt-0.5 leading-none">
+                    {t.videoSub}
+                  </div>
+                </div>
+              </a>
+
+              {/* 4. Features Catalogue - Purple (Priority 4: Subtle soft violet) */}
+              <a
+                href="#fonctionnalites"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const el = document.getElementById('fonctionnalites');
+                  if (el) {
+                    const headerOffset = 85;
+                    const elementPosition = el.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                    window.history.pushState(null, '', '#fonctionnalites');
+                  }
+                }}
+                className="group flex items-center gap-3 px-3.5 sm:px-4 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl bg-gradient-to-r from-[#7E32EB]/70 via-[#6B22DE]/70 to-[#5714C8]/70 hover:from-[#7E32EB]/90 hover:to-[#5714C8]/90 border border-purple-400/25 hover:border-purple-400/40 text-white shadow-2xs hover:shadow-xs hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer text-left rtl:text-right min-h-[60px] sm:min-h-[64px]"
+              >
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/14 backdrop-blur-xs flex items-center justify-center shrink-0 group-hover:bg-white/20 group-hover:scale-105 transition-all shadow-2xs">
+                  <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-purple-200" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="text-xs sm:text-sm font-medium text-white/90 leading-tight">
+                    {t.ctaSecondary}
+                  </div>
+                  <div className="text-[11px] text-purple-200/75 font-normal mt-0.5 leading-none">
+                    {t.ctaSecondarySub}
+                  </div>
+                </div>
               </a>
             </div>
 

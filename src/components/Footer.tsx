@@ -63,6 +63,11 @@ export const Footer: React.FC<FooterProps> = ({ lang, onOpenDownload }) => {
                 </a>
               </li>
               <li>
+                <a href="#video" className="hover:text-white transition-colors">
+                  {lang === 'ar' ? 'فيديو توضيحي للبرنامج' : 'Démonstration vidéo'}
+                </a>
+              </li>
+              <li>
                 <a href="#tarifs" className="hover:text-white transition-colors">
                   {navT.pricing}
                 </a>

@@ -13,6 +13,7 @@ export interface Translations {
     features: string;
     catalogue: string;
     gallery: string;
+    video: string;
     standout: string;
     mobileApp: string;
     pricing: string;
@@ -36,12 +37,17 @@ export interface Translations {
     headline: string;
     supportingText: string;
     ctaPrimary: string;
+    ctaPrimarySub: string;
     ctaSecondary: string;
+    ctaSecondarySub: string;
     trustNoteTitle: string;
     trustNote: string;
     appPreviewTag: string;
     phoneAppCta: string;
+    phoneAppSub: string;
     phoneAppBadge: string;
+    videoCta: string;
+    videoSub: string;
   };
   problems: {
     sectionTitle: string;
@@ -87,6 +93,17 @@ export interface Translations {
       title: string;
       desc: string;
     }[];
+  };
+  videoSection: {
+    sectionBadge: string;
+    sectionTitle: string;
+    sectionSubtitle: string;
+    watchOnYouTube: string;
+    fallbackNotice: string;
+    videoTitle: string;
+    tryFreeCta: string;
+    featuresNotice: string;
+    playerTitle: string;
   };
   standoutFeatures: {
     sectionBadge: string;
@@ -284,6 +301,7 @@ export const translations: Record<Language, Translations> = {
       features: 'Fonctionnalités',
       catalogue: 'Catalogue',
       gallery: 'Galerie',
+      video: 'Vidéo',
       standout: 'IA & Livraison',
       mobileApp: 'App Mobile',
       pricing: 'Tarifs',
@@ -307,14 +325,19 @@ export const translations: Record<Language, Translations> = {
       headline: 'Le logiciel de gestion pensé pour votre magasin informatique.',
       supportingText:
         'Gérez vos ventes, votre stock, vos produits, vos clients et votre service après-vente depuis une seule application Windows.',
-      ctaPrimary: "Télécharger l'essai gratuit (3 jours)",
+      ctaPrimary: "Télécharger l'essai gratuit",
+      ctaPrimarySub: 'Windows • 72h offertes',
       ctaSecondary: 'Découvrir les fonctionnalités',
+      ctaSecondarySub: '9 modules spécialisés',
       trustNoteTitle: 'Architecture Windows native :',
       trustNote:
         'Stockage local de vos données commerciales sur votre machine. Activation de licence en ligne sécurisée.',
       appPreviewTag: 'Interface réelle de TechDesk DZ sous Windows',
-      phoneAppCta: 'Télécharger l’application mobile (TechDesk Review)',
+      phoneAppCta: 'Application mobile',
+      phoneAppSub: 'Android APK • Scanner',
       phoneAppBadge: 'Android APK',
+      videoCta: 'Voir la démo en vidéo',
+      videoSub: 'Présentation guidée',
     },
     problems: {
       sectionTitle: 'Les défis quotidiens des magasins informatiques',
@@ -596,6 +619,19 @@ export const translations: Record<Language, Translations> = {
           desc: 'Configurez l\'identité du magasin, la langue, le scanner Android, les livraisons, les sauvegardes et les paramètres système disponibles.',
         },
       ],
+    },
+    videoSection: {
+      sectionBadge: 'Démonstration Vidéo',
+      sectionTitle: 'Découvrez TechDesk DZ en vidéo',
+      sectionSubtitle:
+        'Découvrez notre logiciel en action et apprenez comment ses fonctionnalités simplifient la gestion de votre magasin.',
+      watchOnYouTube: 'Regarder sur YouTube',
+      fallbackNotice:
+        'Si le lecteur vidéo ne s’affiche pas, vous pouvez regarder la vidéo directement sur YouTube.',
+      videoTitle: 'Découvrez TechDesk DZ en vidéo — Démonstration du logiciel',
+      tryFreeCta: "Télécharger l'essai gratuit (72h)",
+      featuresNotice: 'Démonstration complète • Qualité HD 1080p • Interface réelle Windows',
+      playerTitle: 'TechDesk DZ — Vidéo de démonstration officielle',
     },
     standoutFeatures: {
       sectionBadge: 'AU-DELÀ DE LA GESTION',
@@ -904,6 +940,7 @@ export const translations: Record<Language, Translations> = {
       features: 'المميزات',
       catalogue: 'دليل الوحدات',
       gallery: 'معرض الصور',
+      video: 'فيديو',
       standout: 'الذكاء الاصطناعي والتوصيل',
       mobileApp: 'تطبيق الهاتف',
       pricing: 'الأسعار والترخيص',
@@ -927,14 +964,19 @@ export const translations: Record<Language, Translations> = {
       headline: 'برنامج التسيير المصمم خصيصاً لمحلات الإعلام الآلي.',
       supportingText:
         'قم بإدارة مبيعاتك، مخزونك، منتجاتك، زبائنك وخدمة ما بعد البيع من تطبيق ويندوز واحد.',
-      ctaPrimary: 'تحميل النسخة التجريبية 3 أيام',
-      ctaSecondary: 'اكتشف المميزات',
+      ctaPrimary: 'تحميل النسخة التجريبية',
+      ctaPrimarySub: 'ويندوز • 72 ساعة تجربة',
+      ctaSecondary: 'استكشاف المميزات',
+      ctaSecondarySub: '9 وحدات تسيير للمحل',
       trustNoteTitle: 'هندسة ويندوز مكتبية أصيلة:',
       trustNote:
         'تخزين محلي كامل لبياناتك التجارية على جهازك. تفعيل آمن للترخيص عبر الإنترنت.',
       appPreviewTag: 'واجهة حقيقية لبرنامج TechDesk DZ على نظام ويندوز',
-      phoneAppCta: 'تحميل تطبيق الهاتف (TechDesk Review)',
+      phoneAppCta: 'تطبيق الهاتف',
+      phoneAppSub: 'أندرويد APK • ماسح الباركود',
       phoneAppBadge: 'Android APK',
+      videoCta: 'شاهد استعراض الفيديو',
+      videoSub: 'عرض توضيحي شامل',
     },
     problems: {
       sectionTitle: 'التحديات اليومية لمحلات الإعلام الآلي والهواتف',
@@ -1216,6 +1258,19 @@ export const translations: Record<Language, Translations> = {
           desc: 'اضبط هوية المتجر واللغة والماسح الضوئي لأندرويد والتوصيل والنسخ الاحتياطية وإعدادات النظام المتاحة.',
         },
       ],
+    },
+    videoSection: {
+      sectionBadge: 'عرض توضيحي بالفيديو',
+      sectionTitle: 'اكتشف TechDesk DZ بالفيديو',
+      sectionSubtitle:
+        'شاهد برنامجنا أثناء العمل واكتشف كيف تساعدك وظائفه على تسيير متجرك بسهولة.',
+      watchOnYouTube: 'مشاهدة على يوتيوب',
+      fallbackNotice:
+        'إذا تعذر تشغيل مشغل الفيديو في المتصفح، يمكنك مشاهدة العرض التوضيحي مباشرة على يوتيوب.',
+      videoTitle: 'اكتشف TechDesk DZ بالفيديو — استعراض عملي للبرنامج',
+      tryFreeCta: 'تحميل النسخة التجريبية مجاناً (72 ساعة)',
+      featuresNotice: 'استعراض شامل • جودة عالية HD 1080p • واجهة حقيقية لويندوز',
+      playerTitle: 'TechDesk DZ — فيديو استعراض البرنامج الرسمي',
     },
     standoutFeatures: {
       sectionBadge: 'إمكانيات تتجاوز التسيير',
