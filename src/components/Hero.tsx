@@ -82,12 +82,28 @@ export const Hero: React.FC<HeroProps> = ({ lang, onOpenDownload }) => {
                 href="#video"
                 onClick={(e) => {
                   e.preventDefault();
-                  const el = document.getElementById('video');
-                  if (el) {
-                    const headerOffset = 85;
-                    const elementPosition = el.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                  const playerEl =
+                    document.getElementById('video-player') || document.getElementById('video');
+                  if (playerEl) {
+                    const headerHeight =
+                      document.querySelector('header')?.getBoundingClientRect().height || 85;
+                    const playerRect = playerEl.getBoundingClientRect();
+                    const playerTop = playerRect.top + window.pageYOffset;
+
+                    const viewportHeight = window.innerHeight;
+                    const availableHeight = viewportHeight - headerHeight;
+                    let targetScroll = playerTop - headerHeight - 16;
+
+                    // If screen has sufficient height, center the video player vertically in view
+                    if (availableHeight > playerRect.height + 40) {
+                      const verticalPadding = (availableHeight - playerRect.height) / 2;
+                      targetScroll = playerTop - headerHeight - verticalPadding;
+                    }
+
+                    window.scrollTo({
+                      top: Math.max(0, Math.round(targetScroll)),
+                      behavior: 'smooth',
+                    });
                     window.history.pushState(null, '', '#video');
                   }
                 }}

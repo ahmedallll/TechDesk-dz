@@ -159,13 +159,27 @@ export const Header: React.FC<HeaderProps> = ({
     setMobileMenuOpen(false);
 
     const targetId = href.replace('#', '');
-    const targetElement = document.getElementById(targetId);
+    const targetElement =
+      targetId === 'video'
+        ? (document.getElementById('video-player') || document.getElementById('video'))
+        : document.getElementById(targetId);
+
     if (targetElement) {
-      const headerOffset = 85;
-      const elementPosition = targetElement.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      const headerHeight = document.querySelector('header')?.getBoundingClientRect().height || 85;
+      const elementRect = targetElement.getBoundingClientRect();
+      const elementTop = elementRect.top + window.pageYOffset;
+
+      const viewportHeight = window.innerHeight;
+      const availableHeight = viewportHeight - headerHeight;
+      let targetScroll = elementTop - headerHeight - 16;
+
+      if (targetId === 'video' && availableHeight > elementRect.height + 40) {
+        const verticalPadding = (availableHeight - elementRect.height) / 2;
+        targetScroll = elementTop - headerHeight - verticalPadding;
+      }
+
       window.scrollTo({
-        top: offsetPosition,
+        top: Math.max(0, Math.round(targetScroll)),
         behavior: 'smooth',
       });
     }

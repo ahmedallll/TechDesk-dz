@@ -56,7 +56,7 @@ export const VideoSection: React.FC<VideoSectionProps> = ({
         </div>
 
         {/* Responsive 16:9 Video Player */}
-        <div className="max-w-4xl mx-auto">
+        <div id="video-player" className="max-w-4xl mx-auto scroll-mt-24">
           <div className="relative w-full aspect-video rounded-2xl sm:rounded-3xl overflow-hidden bg-black shadow-[0_20px_50px_rgba(25,19,48,0.16)] border border-purple-200/70 ring-1 ring-black/5">
             {/* Fallback / Error view if embedded player cannot load */}
             {iframeError ? (
