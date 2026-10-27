@@ -25,8 +25,9 @@ export const VideoSection: React.FC<VideoSectionProps> = ({
 
   const videoId = siteConfig.media?.demoVideoId || 'QwJUhLTmNmc';
   const youtubeUrl = siteConfig.media?.demoVideoUrl || 'https://youtu.be/QwJUhLTmNmc';
-  // Use YouTube privacy-enhanced embed domain (youtube-nocookie.com) without autoplay
-  const embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1&enablejsapi=1`;
+
+  // Embed URL with vq=hd720 requesting 720p HD playback without blocking playback scripts
+  const embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1&vq=hd720`;
 
   return (
     <section
@@ -118,6 +119,9 @@ export const VideoSection: React.FC<VideoSectionProps> = ({
             </a>
 
             <div className="text-[11px] sm:text-xs text-[#544C73] flex items-center gap-2">
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-purple-100/90 text-purple-900 text-[10px] sm:text-[11px] font-bold border border-purple-200">
+                HD 720p
+              </span>
               <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
               <span>{t.featuresNotice}</span>
             </div>
